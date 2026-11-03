@@ -83,7 +83,7 @@ jobs:
         run: |
           gh auth setup-git
           git -C hosting fetch origin sites
-          git -C hosting checkout --detach origin/sites
+          git -C hosting checkout --detach FETCH_HEAD
           python scripts/sync_sites_source.py
           git -C hosting add -- app public backend/calendar.json .openai/synced-files.json
           if git -C hosting diff --cached --quiet; then

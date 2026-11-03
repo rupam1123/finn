@@ -11,7 +11,10 @@ old=json.loads(manifest.read_text()) if manifest.exists() else {}
 files=[p for p in subprocess.check_output(['git','-C',str(ROOT),'ls-files','-z','--','frontend/app','frontend/public']).decode().split('\0') if p]
 mapping={p.removeprefix('frontend/'):ROOT/p for p in files}
 mapping['backend/calendar.json']=ROOT/'backend/finn/nse_calendar_2026.json'
-def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def source_bytes(p):
+    data=p.read_bytes()
+    return data.replace(b'\r\n',b'\n') if p.suffix.lower() in {'.ts','.tsx','.css','.js','.mjs','.json','.webmanifest','.svg','.html','.txt'} else data
+def digest(p):return hashlib.sha256(source_bytes(p)).hexdigest()
 def destination(name):
     raw=TARGET/name
     for part in (raw,*raw.parents):
@@ -30,7 +33,7 @@ for name,previous in old.items():
 new={}
 for name,source in mapping.items():
     p=destination(name);p.parent.mkdir(parents=True,exist_ok=True)
-    data=source.read_bytes();p.write_bytes(data);new[name]=hashlib.sha256(data).hexdigest()
+    data=source_bytes(source);p.write_bytes(data);new[name]=hashlib.sha256(data).hexdigest()
 for name in old.keys()-new.keys():
     p=destination(name)
     if p.exists():p.unlink()
