@@ -61,6 +61,7 @@ jobs:
         run: npm run test:touch
       - run: npm run test:assistant
       - run: npm run test:welcome
+      - run: npm run test:picker
       - name: Production build
         run: npm run build
       - name: Welcome first-response check

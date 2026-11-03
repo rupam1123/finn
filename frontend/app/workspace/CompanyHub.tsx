@@ -1,4 +1,5 @@
 'use client';
+import DisclosureSummary from '../DisclosureSummary';
 import CompanyLogo from './CompanyLogo';
 import {useState} from 'react';import Link from 'next/link';import {usePathname} from 'next/navigation';import {MessageCircle} from 'lucide-react';
 import {useWorkspace} from './Workspace';import Research from '../terminal/Research';import {useRead} from './cache';import {amount} from '../terminal/data';import Assistant,{CompanyBrief} from './Assistant';
@@ -11,7 +12,7 @@ export default function CompanyHub({ticker,children}:{ticker:string;children:Rea
  {section==='overview'&&saved.data?.data&&<CompanyBrief ticker={ticker} data={saved.data.data} onAsk={()=>setAssistant(true)}/>}
  <Research ticker={ticker} onSelect={research} jobsEnabled={jobsEnabled} nested section={section}/>
  {section==='evidence'&&<CompanyFeed ticker={ticker}/>}
- <details className="quiet-disclosure"><summary>Research setup</summary><p>{profile==='bank'||profile==='nbfc'?'Lender statement schema':profile==='nonfinancial'?'Industrial statement schema':'Statement schema unresolved'}. Financial values retain the source units, periods and accounting basis.</p></details>{children}
+ <details className="quiet-disclosure"><DisclosureSummary>Research setup</DisclosureSummary><p>{profile==='bank'||profile==='nbfc'?'Lender statement schema':profile==='nonfinancial'?'Industrial statement schema':'Statement schema unresolved'}. Financial values retain the source units, periods and accounting basis.</p></details>{children}
  {assistant&&<Assistant key={ticker} ticker={ticker} onClose={()=>setAssistant(false)}/>}</>
 }
 function CompanyFeed({ticker}:{ticker:string}){const r=useRead<any>(`/api/push/company/${encodeURIComponent(ticker)}?window=30d`);return <section className="research-card"><h2>Company filings · 30 days</h2><p className="caption">Surfaced and routine filings remain inspectable. Coverage may be incomplete.</p>{r.loading?<p role="status">Loading saved disclosures…</p>:r.error?<p role="alert">{r.error}</p>:<><p>{r.data?.cards?.length||0} surfaced · {r.data?.buried?.length||0} routine</p>{[...(r.data?.cards||[]),...(r.data?.buried||[])].map((f:any)=><div className="company-filing" key={f.id}><Link href={`/inbox/${f.id}`}>{f.title}</Link><small>{f.published_at.slice(0,10)} · {f.classification.category}{f.classification.buried?' · routine':''}</small></div>)}</>}</section>}

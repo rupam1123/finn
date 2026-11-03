@@ -14,14 +14,14 @@ html[data-theme=dark]{--simple-edge:#363636;--simple-row:#1a1a1a;--simple-select
 .structured .launch-companies small{line-height:1.5}
 .watchlist-disclosure{border-bottom:1px solid var(--line);background:var(--f-glass,var(--surface))}
 .watchlist-disclosure>summary{display:flex;align-items:center;gap:14px;padding:10px 30px;min-height:44px;font-size:12px;cursor:pointer;color:var(--ink);list-style:none}
-.watchlist-disclosure>summary::after{content:'⌄';margin-left:auto;transition:transform .18s}
-.watchlist-disclosure[open]>summary::after{transform:rotate(180deg)}
+
+
 .watchlist-disclosure>summary span{font-size:11px;color:var(--muted)}
 .structured .watchlist-disclosure .market-ribbon{border:0;margin:0}
 .quiet-disclosure{border:1px solid var(--simple-edge);border-radius:14px;margin:16px 0;padding:0 16px;background:var(--surface);color:var(--ink)}
 .quiet-disclosure>summary{display:flex;align-items:center;gap:8px;min-height:48px;cursor:pointer;font-size:12px;font-weight:500;list-style:none;padding:12px 0;color:var(--ink)}
-.quiet-disclosure>summary::after{content:'+';font-size:18px;font-weight:400;margin-left:auto;color:var(--muted)}
-.quiet-disclosure[open]>summary::after{content:'−'}
+
+
 .quiet-disclosure[open]{padding-bottom:16px}
 .quiet-disclosure p{line-height:1.7;font-size:12px;color:var(--muted)}
 .quiet-disclosure .quiet-disclosure{background:var(--simple-row)}
@@ -79,5 +79,5 @@ html[data-theme=dark]{--simple-edge:#363636;--simple-row:#1a1a1a;--simple-select
 .assistant :is(button,a):focus-visible{outline:2px solid var(--f-accent,var(--accent));outline-offset:3px}
 .saved-coverage{font-size:11px;color:var(--muted);line-height:1.7;margin:10px 0 16px}
 @media(max-width:700px){.structured .workspace{padding-top:20px}.watchlist-disclosure>summary{padding-inline:18px}.company-brief{padding:18px}.brief-heading{align-items:flex-start}.brief-heading h2{font-size:21px}.brief-heading .primary-action{padding-inline:12px}.radar-filter-disclosure>summary{flex-wrap:wrap}.radar-filter-disclosure>summary span{margin-left:0}.structured .inbox-aside{display:block}.structured .research-launch{padding:24px;min-height:260px}.structured .context-price strong{font-size:22px}.structured .company-context-title h1{font-size:29px}.assistant-question input{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.watchlist-disclosure>summary::after{transition:none}}
+
 @media(forced-colors:active){.assistant-topics button[aria-pressed=true],.assistant-topics[data-slide-active=true]>[data-slide-preview=true]{background:Highlight;color:HighlightText;border-color:Highlight}.quiet-disclosure,.company-brief,.assistant-question,.assistant-point{border-color:CanvasText}.brief-excerpt{border-color:Highlight}}

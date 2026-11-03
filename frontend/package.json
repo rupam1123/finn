@@ -18,7 +18,8 @@
     "test:polish": "node --import tsx tests/polish.mjs",
     "test:touch": "node --import tsx tests/slide-selection.mjs",
     "test:assistant": "node --import tsx tests/assistant.mjs",
-    "test:welcome": "node --import tsx tests/welcome.mjs"
+    "test:welcome": "node --import tsx tests/welcome.mjs",
+    "test:picker": "node --import tsx tests/company-picker.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",
