@@ -8,9 +8,12 @@ const dir=path.resolve('dist/client/_next/static/chunks');
 const files=readdirSync(dir).filter(f=>f.endsWith('.js'));
 const workspace=files.find(f=>f.startsWith('Workspace-'));
 assert.ok(workspace,'Built workspace chunk is present');
-const text=readFileSync(path.join(dir,workspace),'utf8');
-const [imports]=parse(text);
 let checked=false;
+// Shared Link code can move into any common client chunk as routes evolve.
+for(const file of files){
+const text=readFileSync(path.join(dir,file),'utf8');
+const [imports]=parse(text);
+
 for(const item of imports){
  const literal=text.slice(item.s,item.e),specifier=item.n??(/^`\.\/[^`$]+`$/.test(literal)?literal.slice(1,-1):null);
  if(item.d<0||!specifier?.startsWith('./'))continue;
@@ -23,5 +26,6 @@ for(const item of imports){
  for(const method of ['navigateClientSide','getPrefetchInterceptionContext','getMountedSlotsHeader','createAppPrefetchRequestHeaders'])assert.ok(new RegExp('\\b'+method+'\\s*:').test(source),'Router namespace retains '+method);
  checked=true;
 }
-assert.ok(checked,'Navigation dynamic-entry namespace contract was checked');
+}
+assert.ok(checked,'Navigation dynamic-entry namespace contract was checked across the client graph');
 console.log('Production router namespace: navigation and prefetch functions retained.');
