@@ -1,0 +1,22 @@
+/* Existing assistant styles; no workspace redesign. */
+.assistant{color:var(--ink);padding-bottom:8px}
+.assistant-intro{font-size:13px;line-height:1.7;margin:0 0 18px}
+.assistant-topics{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.assistant-topics{touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.assistant-topics[data-slide-active=true]>[data-slide-preview=true]{background:var(--f-selected);color:var(--f-on-accent,#000);border-color:var(--f-positive,#537650)}
+.assistant-topics button{border:1px solid var(--line);border-radius:20px;padding:9px 13px;min-height:44px;font-size:12px;background:var(--surface);color:var(--ink)}
+.assistant-topics button[aria-pressed=true]{background:var(--f-selected);border-color:var(--f-positive,#537650);color:var(--f-on-accent,#000)}
+.assistant-question{display:flex;align-items:center;border:1px solid var(--line);border-radius:13px;padding:3px 6px 3px 14px;gap:6px;background:var(--surface);margin-bottom:24px}
+.assistant-question input{min-width:0;flex:1;min-height:44px;border:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;outline-offset:2px}
+.assistant-question input::placeholder{color:var(--muted)}
+.assistant-answer .section-heading{gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+.assistant-answer h3{font-size:16px;line-height:1.5;overflow-wrap:anywhere}
+.assistant-mode{font-size:10px;line-height:1.5;border-radius:7px;padding:5px 8px;background:var(--f-chip);color:var(--muted)}
+.assistant-point{padding:16px 0;border-bottom:1px solid var(--line)}
+.assistant-point p{font-size:14px;line-height:1.85;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:12px}
+.assistant-point:last-child{border-bottom:0}
+.assistant-generate{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.assistant-generate small{color:var(--muted);font-size:11px}
+.assistant :is(.notice,.caption){line-height:1.7}
+.assistant .citation-pill{min-height:36px}
+.assistant :is(button,a):focus-visible{outline:2px solid var(--f-accent,var(--accent));outline-offset:3px}

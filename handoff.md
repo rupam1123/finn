@@ -2,6 +2,8 @@
 
 Prepared 1 November 2026. This document describes the consolidated source pack. Read it before older checkpoints. The user's existing Windows project is usually `X:\finn_day1_verification_kit\finn`.
 
+**Current user-directed rollback:** earlier pre-redesign workspace UI restored from d1ae33d. Keep the FINN welcome page and rolling company picker. Bottom navigation is tap-only; press-and-slide installation is removed. See [rollback scope](docs/ui-rollback-2026-11-04.md). The design updates below are historical. Deployment remains paused.
+
 **4 November Swiftz/source update:** root welcome route, solid surfaces, local company logos, unused-import cleanup and judge/manual documentation are recorded in [release readiness](docs/release-readiness-2026-11-04.md). GitHub source upload is authorised; deployment stays paused.
 
 **4 November usability update:** simplified first views and a saved-primary-source assistant are implemented locally. Explicit owner AI summaries are opt-in; public review stays model-free. Read [the upgrade and verification scope](docs/usability-assistant-upgrade-2026-11-04.md). Publication remains paused. Browser control is disabled, so this update has no new rendered-browser or actual-device acceptance result.

@@ -11,7 +11,7 @@ Open `/` for the FINN welcome page. Use the sun/moon control to choose light or 
 | Inbox | Choose 24 hours, 3/7/30 days or Latest session. Open a filing. Expand find/filter/sort; bookmark or export filtered CSV. | Selected window and saved filing-check dates differ. Routine filings and all 17 categories remain inspectable. A priority score is review priority. |
 | Radar | Expand Adjust filters. Set price move and volume multiple, then choose a time window. Open Inspect timeline. | Returns use adjusted EOD prices; volume is raw shares against the prior 20 sessions. Known-at-cutoff and later filings differ. Timing is not causation. |
 | Research | Search a company name or NSE ticker, or swipe the centred watchlist picker and choose Research for the selected company. | ZOMATO resolves to ETERNAL. Historical TATAMOTORS requires choosing TMPV or TMCV; histories are not spliced. |
-| Company Overview | Read the brief, open Ask FINN, or expand charts and detailed business analysis. | Saved source dates and incomplete states. The price is a saved close. |
+| Company Overview | Explore business/market context, open Ask FINN, or use the Say–Do, Forensics and Vault tabs. | Saved source dates and incomplete states. The price is a saved close. |
 | Say–Do audit | Open each quarter, management commentary and delivered evidence. | Source coverage and matched numerical comparisons have separate counts. Missing, qualitative and not-comparable records are not beat/miss verdicts. |
 | Financials | Expand a statement to inspect tables/charts. Explore annual cash/debt and governance evidence. | Period, units, currency and consolidated/standalone basis. Lender schemas differ from industrial companies. Visual-review flags remain explicit. |
 | Sources | Filter documents and open View saved PDF or Open original. | Page, quotation, observed time, URL and document hash. A PDF iframe may be blank in some browsers; use the saved/original link. |
@@ -30,8 +30,8 @@ Public review and the hosted saved-data port keep new generation disabled. A sou
 
 ## Touch and keyboard
 
-- Tap a destination normally, or press and drag horizontally across bottom navigation and release over the destination. Selection commits once on release. Vertical scrolling and cancelled gestures do not navigate.
-- The same gesture is supported on applicable segmented/filter groups and assistant topics. It is not a drag gesture for action buttons such as Refresh or Export.
+- Tap a bottom navigation destination to open it. Press-and-slide page navigation has been removed at the user’s request.
+- Use ordinary taps/clicks for filters and actions. The rolling company picker retains its own native scrolling and mouse dragging.
 - Use Tab/Shift+Tab, Enter/Space and Escape. Dialogs retain focus and restore it on close. Charts have native saved-session controls and text tables.
 - The Research watchlist picker supports native horizontal swiping, mouse dragging, previous/next controls and Left/Right/Home/End keys. Only the selected card is in the Tab sequence; the explicit Research action opens its page. All 18 companies remain available.
 - Long tables scroll horizontally. Reduced-motion preferences suppress decorative animation.

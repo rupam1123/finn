@@ -1,0 +1,15 @@
+/* Retained FINN welcome page; styling is scoped to this page only. */
+.welcome-page{--paper:#fff;--surface:#f5f5f5;--ink:#000;--muted:#626262;--f-focus:#286400;font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,'DM Sans','Segoe UI',sans-serif;letter-spacing:-.01em}
+html[data-theme=dark] .welcome-page{--paper:#000;--surface:#1a1a1a;--ink:#fff;--muted:#bbb;--f-focus:#96f15b}
+.welcome-page :is(h1,strong){font-family:inherit}
+.welcome-page{min-height:100svh;background:var(--paper);color:var(--ink);display:flex;justify-content:center;padding:0 20px}
+.welcome-shell{width:100%;max-width:390px;min-height:min(932px,100svh);display:flex;flex-direction:column;align-items:center;padding:24px 0 max(26px,env(safe-area-inset-bottom));text-align:center}
+.welcome-top{display:flex;justify-content:space-between;align-items:center;width:100%;height:44px}.welcome-top>a{display:flex;gap:8px;align-items:center;color:var(--ink);font-size:24px;letter-spacing:-1px}.welcome-top .icon-button{background:var(--surface);color:var(--ink)}
+.welcome-art{width:300px;height:324px;max-width:100%;margin:50px auto 58px;display:flex;align-items:center;justify-content:center}.welcome-art img{display:block;width:300px;height:324px;max-width:100%;object-fit:contain;transform:scaleX(-1)}
+.welcome-copy h1{font-size:50px;font-weight:500;line-height:55px;letter-spacing:-1px;margin:0;color:var(--ink)}.welcome-copy p{font-size:18px;line-height:26px;color:var(--muted);margin:24px 0 0}.welcome-progress{margin:30px 0 36px}.welcome-actions{width:100%;margin-top:auto}.welcome-primary{display:flex;align-items:center;justify-content:center;min-height:60px;background:#96f15b;color:#000;border-radius:20px;font-size:18px;font-weight:500}.welcome-secondary{display:inline-flex;align-items:center;min-height:48px;color:var(--muted);font-size:16px;margin-top:10px}
+.welcome-page a:focus-visible{outline:2px solid var(--f-focus);outline-offset:5px}
+@media(max-height:780px){.welcome-art{margin:24px auto 28px;height:240px;width:222px}.welcome-art img{width:222px;height:240px}.welcome-copy h1{font-size:42px;line-height:46px}.welcome-copy p{margin-top:18px;font-size:16px;line-height:24px}.welcome-progress{margin:22px 0}.welcome-shell{min-height:100svh}}
+@media(max-width:360px){.welcome-copy h1{font-size:38px;line-height:43px}.welcome-page{padding-inline:18px}}
+.welcome-page *{box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){.welcome-page *{animation:none!important;transition:none!important}}
+@media(forced-colors:active){.welcome-primary{background:Highlight;color:HighlightText}}

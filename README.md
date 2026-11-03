@@ -18,7 +18,7 @@ FINN is a mobile-first prototype for the ENAM AI Engineer Build Challenge. It he
 | 🕰️ Point-in-time context | Radar separates filings known at the alert cutoff from later observations. Nearby does not imply causation. |
 | 🛡️ Conservative missing states | Missing inputs stay missing. Banks use lender-specific schemas; unsupported statements do not become invented figures. |
 | 🤖 Bounded AI assistance | Ask FINN searches saved passages for free; fresh AI summaries require an explicit model-enabled owner request and retain citations/review labels. |
-| 📱 Progressive disclosure | Short first views, nested detail, solid Swiftz light/dark surfaces, company identity logos and release-to-select navigation. |
+| 📱 Progressive disclosure | Earlier compact light/dark workspace restored at the user’s request; the FINN welcome page and rolling company picker remain. Bottom navigation uses taps only. |
 | 💾 Saved-only reads | Browsing never fetches upstream data or invokes a model. Explicit jobs handle new source discovery. |
 
 These are implemented design choices, not a claim that FINN is the only product with them or that every research conclusion is verified.
