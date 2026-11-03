@@ -1,0 +1,41 @@
+{
+  "TRENT": {
+    "status": "text_extracted",
+    "pages": 3,
+    "pdf_sha256": "016731c9aba189b06405f22cc90528778bf2baf8ed2ecdff40cc26bab8088cdf",
+    "source_container": {
+      "type": "zip",
+      "url": "https://nsearchives.nseindia.com/corporate/TRENT_ROID_100856_KMP_Doc.zip",
+      "sha256": "d3d885f1783278685c2d04fea2ba8985bde8ad5a175f3950606f2d2bca77a7a4",
+      "entry": "CIMG_500251_19102026172430_2.pdf"
+    },
+    "chain_verified": true,
+    "observed_at": "2026-10-31T10:19:33.831552+00:00"
+  },
+  "SUNPHARMA": {
+    "status": "ocr_required",
+    "pages": 1,
+    "pdf_sha256": "20c0c85f37f1ef976a278e45d66fc2054c0aa6a8fcd0d77f6931212a913b37cf",
+    "source_container": {
+      "type": "zip",
+      "url": "https://nsearchives.nseindia.com/corporate/SUNPHARMA_ROID_100278_KMP_Doc.zip",
+      "sha256": "db7a2e7d7bc5482b8fde20167ab09937dc3a80ba7938f0f7e12e2b470fb516a8",
+      "entry": "CIMG_524715_12102026203423_1.pdf"
+    },
+    "chain_verified": true,
+    "observed_at": "2026-10-31T10:19:35.762299+00:00"
+  },
+  "PERSISTENT": {
+    "status": "text_extracted",
+    "pages": 3,
+    "pdf_sha256": "4f75f8f706534826135d31d5353604238034fa11900040170eb9aff7cb8cc295",
+    "source_container": {
+      "type": "zip",
+      "url": "https://nsearchives.nseindia.com/corporate/PERSISTENT_ROID_100125_KMP_Doc.zip",
+      "sha256": "68909d20a1a6a4ad0e01c8e733cc73e6d58230cfc35857d50a9aaf0956095d76",
+      "entry": "PSLSMPResignationIntimation9102026sd_1.pdf"
+    },
+    "chain_verified": true,
+    "observed_at": "2026-10-31T10:19:36.420889+00:00"
+  }
+}

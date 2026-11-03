@@ -1,0 +1,1 @@
+Real primary excerpts from saved immutable source PDFs fetched during Day 3. URL, hash, original page count and observation time are preserved. Only first three pages are included for period/parser regression tests; not financial accuracy labels. No synthetic company figures.

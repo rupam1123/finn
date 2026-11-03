@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "scope": "Captured real-source replay via FastAPI TestClient; latency is in-process, not public-network/mobile or fresh-provider/model acceptance. No new job or model execution.",
+  "checks": [
+    {
+      "path": "/health",
+      "status": 200,
+      "in_process_ms": 19.79
+    },
+    {
+      "path": "/api/capabilities",
+      "status": 200,
+      "in_process_ms": 6.0
+    },
+    {
+      "path": "/api/portfolio",
+      "status": 200,
+      "in_process_ms": 5.06
+    },
+    {
+      "path": "/api/portfolio/overview",
+      "status": 200,
+      "in_process_ms": 26.43
+    },
+    {
+      "path": "/api/universe?q=TCS",
+      "status": 200,
+      "in_process_ms": 69.4
+    },
+    {
+      "path": "/api/push/digest?window=1d",
+      "status": 200,
+      "in_process_ms": 44.02
+    },
+    {
+      "path": "/api/push/digest?window=7d",
+      "status": 200,
+      "in_process_ms": 101.23
+    },
+    {
+      "path": "/api/push/digest?window=30d",
+      "status": 200,
+      "in_process_ms": 221.46
+    },
+    {
+      "path": "/api/push/company/TCS?window=30d",
+      "status": 200,
+      "in_process_ms": 27.58
+    },
+    {
+      "path": "/api/pull/TCS",
+      "status": 200,
+      "in_process_ms": 20.04
+    },
+    {
+      "path": "/api/pull/DEEPAKNTR",
+      "status": 200,
+      "in_process_ms": 23.93
+    },
+    {
+      "path": "/api/push/alert/TRENT%3A2026-10-30",
+      "status": 200,
+      "in_process_ms": 7.64
+    },
+    {
+      "path": "/api/push/filing/d275e4e159ab8f779bdebdad9feca75940acd80e3e7cb867fe1878fc327273ff",
+      "status": 200,
+      "in_process_ms": 7.26
+    },
+    {
+      "path": "/api/pull/TCS/jobs",
+      "status": 200,
+      "in_process_ms": 5.66
+    },
+    {
+      "path": "/api/evidence/{captured_pdf}.pdf",
+      "status": 200,
+      "integrity": "SHA-256 matches saved PDF bytes"
+    }
+  ],
+  "public_review_post": 403
+}

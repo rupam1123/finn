@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-30",
+  "database_sha256": "49849f20b846fe19fb587be234b2e01e08c2f482025f39762eb26626d2a0d1ea",
+  "database_bytes": 388534272,
+  "sqlite_integrity_check": [
+    [
+      "ok"
+    ]
+  ],
+  "foreign_key_violations": [],
+  "verified_raw_objects": 303,
+  "credential_pattern_findings": [],
+  "secret_scan_scope": "All packaged file bytes; common API key/private key formats plus credential filename exclusion. Not a guarantee against every possible secret format.",
+  "original_project_file_hashes_unchanged": true,
+  "latest_saved_updates_restored": 41,
+  "required_files_present": true,
+  "export_backend_test_result": {
+    "exit_code": 0,
+    "log": "verification/export-pytest.txt"
+  },
+  "prior_checkpoint_integration": "Passed: 153 data HTTP, 795 Push HTTP, 12 React; build and typecheck passed. Not rerun for export.",
+  "excluded": "node_modules, venvs, build/cache output, bytecode, local env secrets, temporary artifacts, baseline/corrupt duplicate DBs"
+}

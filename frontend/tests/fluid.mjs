@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';import {JSDOM} from 'jsdom';
+const dom=new JSDOM('<html><body><div id="root"></div></body></html>',{url:'http://localhost:3000/'});
+Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,Event:dom.window.Event,MutationObserver:dom.window.MutationObserver,IS_REACT_ACT_ENVIRONMENT:true});
+const media=new dom.window.EventTarget();media.matches=false;window.matchMedia=()=>media;
+const React=await import('react');globalThis.React=React;const {createRoot}=await import('react-dom/client');const root=createRoot(document.getElementById('root'));
+const mod=await import('../app/workspace/cache.ts'),cache=mod.useRead?mod:mod.default;
+const motionMod=await import('../app/workspace/motion.ts'),{observeMotion}=motionMod.observeMotion?motionMod:motionMod.default;
+const chartMod=await import('../app/terminal/Chart.tsx'),Chart=typeof chartMod.default==='function'?chartMod.default:chartMod.default.default;
+const checks=[];const realNow=Date.now;let clock=realNow();Date.now=()=>clock;
+const response=data=>({ok:true,json:async()=>data});
+try{
+ cache.clearReadCache();let calls=0;
+ globalThis.fetch=async()=>{calls++;return response({value:42})};await cache.cachedRead('/api/retain');
+ let release;globalThis.fetch=()=>{calls++;return new Promise(resolve=>release=resolve)};clock+=31_000;
+ function Probe(){const read=cache.useRead('/api/retain');return React.createElement('p',null,`${read.data?.value??'empty'}|${read.loading}|${read.refreshing}|${read.error}`)}
+ await React.act(async()=>root.render(React.createElement(Probe)));
+ assert.equal(document.querySelector('p').textContent,'42|false|true|');assert.equal(calls,2);
+ await React.act(async()=>release(response({value:43})));assert.equal(document.querySelector('p').textContent,'43|false|false|');checks.push('Stale return visits display their saved snapshot immediately while revalidating');
+ await React.act(async()=>root.render(null));await React.act(async()=>root.render(React.createElement(Probe)));assert.equal(calls,2);assert.equal(document.querySelector('p').textContent,'43|false|false|');checks.push('Fresh return visits render without a duplicate request or transient loading state');
+ await React.act(async()=>root.render(null));clock+=31_000;globalThis.fetch=async()=>{throw Error('Read failed')};
+ await React.act(async()=>root.render(React.createElement(Probe)));assert.equal(document.querySelector('p').textContent,'43|false|false|Read failed');checks.push('Failed background refresh keeps the saved observation and exposes the error');
+ cache.clearReadCache();const pending=[];globalThis.fetch=()=>new Promise(resolve=>pending.push(resolve));
+ const old=cache.cachedRead('/api/refresh');cache.clearReadCache('/api/refresh');const newer=cache.cachedRead('/api/refresh');
+ pending[1](response({value:'new'}));await newer;pending[0](response({value:'old'}));await old;assert.equal(cache.peekRead('/api/refresh').value,'new');checks.push('An invalidated earlier request cannot repopulate the cache over a newer refresh');
+ clock+=301_000;assert.equal(cache.peekRead('/api/refresh'),null);checks.push('Retained snapshots expire after five minutes and remain memory-only');
+ let observe,observed=[],unobserved=[],disconnected=false;globalThis.IntersectionObserver=class{constructor(cb){observe=cb}observe(el){observed.push(el)}unobserve(el){unobserved.push(el)}disconnect(){disconnected=true}};
+ const surface=document.createElement('div');surface.innerHTML='<article class="filing-card"></article><svg data-motion="plot"><path data-draw="line" pathLength="1"/><g data-draw="grow" style="transform-origin:0px 60px"></g></svg>';
+ const runs=[];for(const el of surface.querySelectorAll('article,path,g'))el.animate=(frames,options)=>{const run={el,frames,options,cancelled:false};runs.push(run);return {finished:new Promise(()=>{}),cancel:()=>{run.cancelled=true}}};
+ const stop=observeMotion(surface,window);assert.equal(observed.length,2);const card=surface.firstElementChild,plot=surface.lastElementChild;
+ observe([{target:card,isIntersecting:true},{target:plot,isIntersecting:true}]);assert.equal(runs.length,3);assert.ok(runs[0].frames[0].transform.includes('scale(.965)'));assert.equal(runs[1].frames[0].strokeDashoffset,1);assert.equal(runs[2].frames[0].transform,'scaleY(.02)');
+ observe([{target:card,isIntersecting:true},{target:plot,isIntersecting:true}]);assert.equal(runs.length,3);checks.push('Tiles scale into view once; chart traces draw and bars grow from their declared zero origin');
+ const added=card.cloneNode();surface.append(added);await Promise.resolve();assert.equal(observed.length,3);checks.push('Newly paginated tiles register with the existing observer');
+ media.matches=true;media.dispatchEvent(new Event('change'));assert.ok(runs.every(r=>r.cancelled));stop();assert.ok(disconnected);checks.push('Reduced motion cancels running effects; route cleanup disconnects observers');media.matches=false;
+ const frames=new Map();let serial=0;globalThis.requestAnimationFrame=cb=>{frames.set(++serial,cb);return serial};globalThis.cancelAnimationFrame=id=>frames.delete(id);
+ const bars=Array.from({length:12},(_,i)=>({date:`2026-10-${String(i+1).padStart(2,'0')}`,adjusted_close:100+i,close:100+i,open:100+i,high:102+i,low:99+i,volume:1000+i}));
+ await React.act(async()=>root.render(React.createElement(Chart,{bars})));const svg=document.querySelector('.chart-canvas');svg.getBoundingClientRect=()=>({left:0,width:760});
+ await React.act(async()=>{for(let i=0;i<100;i++)svg.dispatchEvent(new dom.window.MouseEvent('pointermove',{bubbles:true,clientX:58+i}))});
+ assert.equal(frames.size,1);await React.act(async()=>{for(const cb of frames.values())cb();frames.clear()});assert.equal(document.querySelector('input[type=range]').value,'2');
+ checks.push('One hundred pointer movements coalesce into one frame and select the correct saved session');
+ await React.act(async()=>svg.dispatchEvent(new dom.window.MouseEvent('pointermove',{bubbles:true,clientX:120})));assert.equal(frames.size,1);await React.act(async()=>root.render(null));assert.equal(frames.size,0);checks.push('Unmount cancels queued pointer updates rather than rendering a removed chart');
+ console.log(JSON.stringify({passed:true,checks,scope:'Isolated regressions with synthetic data; no live acceptance or phone frame-rate claim.'},null,2));
+}finally{Date.now=realNow;await React.act(async()=>root.unmount());dom.window.close()}

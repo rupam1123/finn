@@ -1,0 +1,4 @@
+'use client';
+import {FileCheck2,ScanLine,ArrowUpRight} from 'lucide-react';
+// Original, decorative document stack. It contains no financial observations.
+export default function ResearchMotion(){return <div className="research-motion" aria-hidden="true"><div className="evidence-orbit"/><div className="motion-document motion-document-back"><ScanLine size={22}/><i/><i/><i/></div><div className="motion-document motion-document-mid"><FileCheck2 size={24}/><i/><i/><i/></div><div className="motion-document motion-document-front"><span className="motion-document-mark">f.</span><div className="document-graph"><span/><span/><span/><span/><span/></div><i/><i/><span className="document-seal"><FileCheck2 size={16}/></span></div><span className="motion-orbit-pin"><ArrowUpRight size={17}/></span></div>}

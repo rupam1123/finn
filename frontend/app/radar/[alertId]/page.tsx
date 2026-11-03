@@ -1,0 +1,1 @@
+import {AlertDetail} from '../../workspace/Radar';export default async function Page({params,searchParams}:{params:Promise<{alertId:string}>;searchParams:Promise<Record<string,string>>}){const {alertId}=await params,q=await searchParams;return <AlertDetail id={decodeURIComponent(alertId)} price={q.price_threshold||'3'} volume={q.vol_threshold||'2'}/>}
