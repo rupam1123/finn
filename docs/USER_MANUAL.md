@@ -12,7 +12,7 @@ Open `/` for the FINN welcome page. Use the sun/moon control to choose light or 
 | Radar | Expand Adjust filters. Set price move and volume multiple, then choose a time window. Open Inspect timeline. | Returns use adjusted EOD prices; volume is raw shares against the prior 20 sessions. Known-at-cutoff and later filings differ. Timing is not causation. |
 | Research | Search a company name or NSE ticker, or swipe the centred watchlist picker and choose Research for the selected company. | ZOMATO resolves to ETERNAL. Historical TATAMOTORS requires choosing TMPV or TMCV; histories are not spliced. |
 | Company Overview | Explore business/market context, open Ask FINN, or use the Say–Do, Forensics and Vault tabs. | Saved source dates and incomplete states. The price is a saved close. |
-| Say–Do audit | Open each quarter, management commentary and delivered evidence. | Source coverage and matched numerical comparisons have separate counts. Missing, qualitative and not-comparable records are not beat/miss verdicts. |
+| Say–Do audit | Expand a compact quarter row, then open management commentary or delivered-period evidence. The period and evidence status remain visible while closed. | Source coverage and matched numerical comparisons have separate counts. Missing, qualitative and not-comparable records are not beat/miss verdicts. |
 | Financials | Expand a statement to inspect tables/charts. Explore annual cash/debt and governance evidence. | Period, units, currency and consolidated/standalone basis. Lender schemas differ from industrial companies. Visual-review flags remain explicit. |
 | Sources | Filter documents and open View saved PDF or Open original. | Page, quotation, observed time, URL and document hash. A PDF iframe may be blank in some browsers; use the saved/original link. |
 | Universe | Pick one of the 18 assessment companies. Search, sort or switch to table view. Expand Market overview if needed. | Chart colour compares plotted endpoints; the 1D badge describes one session. These can differ. |
@@ -33,7 +33,7 @@ Public review and the hosted saved-data port keep new generation disabled. A sou
 - Tap a bottom navigation destination to open it. Press-and-slide page navigation has been removed at the user’s request.
 - Use ordinary taps/clicks for filters and actions. The rolling company picker retains its own native scrolling and mouse dragging.
 - Use Tab/Shift+Tab, Enter/Space and Escape. Dialogs retain focus and restore it on close. Charts have native saved-session controls and text tables.
-- The Research watchlist picker supports native horizontal swiping, mouse dragging, previous/next controls and Left/Right/Home/End keys. Only the selected card is in the Tab sequence; the explicit Research action opens its page. All 18 companies remain available.
+- The Research watchlist picker supports native horizontal swiping, mouse dragging and Left/Right/Home/End keys. Only the selected card is in the Tab sequence; the explicit Research action opens its page. All 18 companies remain available.
 - Long tables scroll horizontally. Reduced-motion preferences suppress decorative animation.
 
 ## Install and run
@@ -92,8 +92,11 @@ npm --prefix frontend run test:workspace
 npm --prefix frontend run test:touch
 npm --prefix frontend run test:assistant
 npm --prefix frontend run test:welcome
+npm --prefix frontend run test:details
 npm --prefix frontend run typecheck
 npm --prefix frontend run build
 ```
 
 See [release readiness](release-readiness-2026-11-04.md). Tests and builds do not certify every financial interpretation, licensing choice or physical device. Actual AI chat/build-history export remains a separate submission artifact.
+
+Typography follows the verified Swiftz SF Pro Display roles and spacing. Devices with the local Apple font use it; this Windows installation uses bundled DM Sans. No proprietary Apple font file is distributed. See [final UI checks](brand-detail-polish-2026-11-04.md).

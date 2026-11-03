@@ -14,10 +14,12 @@ import "./workspace/swiftz.css";
 import "./workspace/welcome.css";
 import "./workspace/picker.css";
 import "./workspace/assistant.css";
+import "./workspace/details-polish.css";
+import "./workspace/typography.css";
 
 export const metadata: Metadata = {title: "FINN — Research workspace", description: "Assessment prototype for reviewing saved financial sources and AI-assisted analysis.", robots:{index:false,follow:false},manifest: "/manifest.webmanifest",
   appleWebApp: {capable: true, statusBarStyle: "black-translucent", title: "FINN"},
-  icons: {icon: "/icon.svg", apple: "/icon-192.png"}};
+  icons: {icon: "/brand/finn-mark.png", apple: "/brand/finn-mark.png"}};
 export const viewport: Viewport = {width: "device-width", initialScale: 1, themeColor: "#ffffff", viewportFit: "cover"};
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {

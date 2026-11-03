@@ -1,6 +1,6 @@
 'use client';
 import {useCallback,useEffect,useId,useRef,useState} from 'react';
-import Link from 'next/link';import {ArrowUpRight,ChevronLeft,ChevronRight} from 'lucide-react';
+import Link from 'next/link';import {ArrowUpRight} from 'lucide-react';
 import type {Holding} from '../terminal/data';import CompanyLogo from './CompanyLogo';
 
 export function closestCompany(centres:number[],target:number){return centres.reduce((best,x,i)=>Math.abs(x-target)<Math.abs(centres[best]-target)?i:best,0)}
@@ -27,7 +27,7 @@ export default function CompanyPicker({holdings,loading=false}:{holdings:Holding
    onClickCapture={e=>{if(suppressClick.current){suppressClick.current=false;if(e.detail>0){e.preventDefault();e.stopPropagation()}}}}>
    {holdings.map((h,i)=><button type="button" key={h.symbol} className={`company-picker-card ${i===active?'is-current':''}`} tabIndex={i===active?0:-1} aria-pressed={i===active} aria-label={`${h.symbol}, ${h.name}, ${h.research_available?'saved research':'research not saved'}`} onClick={()=>choose(i)}><CompanyLogo symbol={h.symbol}/><strong>{h.symbol}</strong><span className="picker-company-name">{h.name}</span><span className="picker-availability"><i/>{h.research_available?'Saved research':'Explore sources'}</span></button>)}
   </div></div>
-  <div className="picker-footer"><button className="picker-step" type="button" aria-label="Previous company" disabled={active===0} onClick={()=>choose(active-1)}><ChevronLeft size={20}/></button><Link className="picker-open" href={`/research/${encodeURIComponent(company.symbol)}`} prefetch={false}>Research {company.symbol}<ArrowUpRight size={16}/></Link><button className="picker-step" type="button" aria-label="Next company" disabled={active===holdings.length-1} onClick={()=>choose(active+1)}><ChevronRight size={20}/></button></div>
+  <div className="picker-footer"><Link className="picker-open" href={`/research/${encodeURIComponent(company.symbol)}`} prefetch={false}>Research {company.symbol}<ArrowUpRight size={16}/></Link></div>
   <span className="sr-only" role="status" aria-live="polite">{company.symbol}, company {active+1} of {holdings.length}</span>
   </>}
  </section>

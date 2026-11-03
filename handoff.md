@@ -2,6 +2,8 @@
 
 Prepared 1 November 2026. This document describes the consolidated source pack. Read it before older checkpoints. The user's existing Windows project is usually `X:\finn_day1_verification_kit\finn`.
 
+**Current targeted follow-up:** retain the restored app structure/tap-only controls. Add the supplied transparent F mark, all-18 ribbon logos, arrow-free rolling picker, aligned Ask FINN icon button, refined Radar ranges, no welcome dots, consistent verified typography and compact expandable quarter rows. [Scope and font availability limit](docs/brand-detail-polish-2026-11-04.md). No deployment is authorised by this task.
+
 **Current user-directed rollback:** earlier pre-redesign workspace UI restored from d1ae33d. Keep the FINN welcome page and rolling company picker. Bottom navigation is tap-only; press-and-slide installation is removed. See [rollback scope](docs/ui-rollback-2026-11-04.md). The design updates below are historical. Deployment remains paused.
 
 **4 November Swiftz/source update:** root welcome route, solid surfaces, local company logos, unused-import cleanup and judge/manual documentation are recorded in [release readiness](docs/release-readiness-2026-11-04.md). GitHub source upload is authorised; deployment stays paused.
