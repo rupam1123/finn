@@ -57,6 +57,8 @@ jobs:
         run: npm run typecheck
       - name: Frontend regression checks
         run: npm run test:workspace
+      - name: Touch selection checks
+        run: npm run test:touch
       - name: Production build
         run: npm run build
 

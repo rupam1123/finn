@@ -15,7 +15,8 @@
     "test:workspace": "node --import tsx tests/day4-ui.mjs && node --import tsx tests/pull-races.mjs && node --import tsx tests/review-safeguards.mjs && node --import tsx tests/market-visuals.mjs && node --import tsx tests/workspace-ui.mjs && node tests/day4-service-worker.mjs && node --import tsx tests/theme.mjs && node --import tsx tests/fluid.mjs && node --import tsx tests/polish.mjs",
     "test:theme": "node --import tsx tests/theme.mjs",
     "test:fluid": "node --import tsx tests/fluid.mjs",
-    "test:polish": "node --import tsx tests/polish.mjs"
+    "test:polish": "node --import tsx tests/polish.mjs",
+    "test:touch": "node --import tsx tests/slide-selection.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",
