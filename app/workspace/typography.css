@@ -1,0 +1,26 @@
+/* Verified Swiftz family/roles. Local SF files only; no Apple font is distributed.
+   Windows/non-Apple devices without SF use the existing self-hosted DM Sans. */
+@font-face{font-family:'FINN SF Display';src:local('SF Pro Display Regular'),local('SFProDisplay-Regular');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'FINN SF Display';src:local('SF Pro Display Medium'),local('SFProDisplay-Medium');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'FINN SF Display';src:local('SF Pro Display Semibold'),local('SFProDisplay-Semibold');font-style:normal;font-weight:600;font-display:swap}
+:root{--font-ui:'FINN SF Display','SF Pro Display',-apple-system,BlinkMacSystemFont,'DM Sans','Segoe UI',sans-serif;--type-title:32px;--type-section:20px;--type-body:16px;--type-label:14px;--type-caption:12px}
+html body{font-family:var(--font-ui);font-size:var(--type-body);line-height:1.5625;letter-spacing:-.01em;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+html body :is(h1,h2,h3,h4,h5,p,a,span,strong,b,em,label,legend,output,summary,figcaption,caption,td,th,button,input,select,textarea,blockquote,dt,dd,li,small,kbd,svg text){font-family:var(--font-ui)!important}
+html body :is(h1,h2,h3,h4,h5){font-weight:500;letter-spacing:-.01em}
+html body :is(strong,b,th){font-weight:600}
+html body :is(button,input,select,textarea){letter-spacing:-.01em}
+html body :is(.page-heading h1,.company-context-title h1){font-size:var(--type-title);font-weight:500;line-height:1.15;letter-spacing:-.02em}
+html body :is(.section-heading h2,.research-card h3,.coverage-card h3,.holding-card h3){font-size:var(--type-section);font-weight:500;line-height:1.3;letter-spacing:-.01em}
+html body .page-heading p{font-size:var(--type-label);font-weight:400;line-height:1.6}
+html body :is(.section-description,.research-card>p,.comparison>p,.analysis-note>p,.quarter-body>p,.source-excerpt>p){font-size:var(--type-label);font-weight:400;line-height:1.6}
+html body :is(.caption,.research-status,.company-heading p,.coverage-card p,.source-row p,.ratio-row small,.evidence-meta){font-size:var(--type-caption);line-height:1.6;font-weight:400}
+html body :is(.window-pills button,.quick-categories button,.feed-tabs button,.company-context nav a,.research-nav button,.outline-button,.primary-action,.action-link){font-size:var(--type-label);font-weight:500;line-height:1.4}
+html body :is(.table-scroll,.financial-table) :is(th,td){font-size:13px;line-height:1.5}
+html body :is(.table-scroll,.financial-table) th{font-weight:500}
+html body .welcome-page{font-family:var(--font-ui)}
+html body .welcome-copy h1{font-size:clamp(36px,11.1vw,50px);font-weight:500;line-height:1.1;letter-spacing:-1px}
+html body .welcome-copy p{font-size:18px;line-height:26px;font-weight:400}
+html body .welcome-primary{font-size:18px;line-height:26px;font-weight:500}
+html body .welcome-secondary{font-size:16px;font-weight:400;line-height:24px}
+@media(max-height:780px){html body .welcome-copy h1{font-size:clamp(34px,10.7vw,42px);line-height:1.1}html body .welcome-copy p{font-size:16px;line-height:24px}}
+@media(max-width:360px){html body .welcome-copy h1{font-size:36px;line-height:1.1}}

@@ -78,5 +78,13 @@
   "INFY": {
     "path": "/company-logos/INFY.png",
     "source": "https://companiesmarketcap.com/img/company-logos/64/INFY.png"
+  },
+  "TMPV": {
+    "path": "/company-logos/TMPV.png",
+    "source": "https://companiesmarketcap.com/img/company-logos/64/TATAMOTORS.NS.png"
+  },
+  "JYOTHYLAB": {
+    "path": "/company-logos/JYOTHYLAB.png",
+    "source": "https://www.jyothylabs.com/wp-content/themes/twentynineteen-child/images/logo.png"
   }
 }
