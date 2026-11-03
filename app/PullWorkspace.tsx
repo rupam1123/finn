@@ -1,4 +1,5 @@
 "use client";
+import DisclosureSummary from './DisclosureSummary';
 import { useEffect, useRef, useState } from "react";
 import EvidenceButton, {sourceLink} from "./EvidenceButton";
 import CompanySearch from "./CompanySearch";
@@ -196,9 +197,9 @@ export default function PullWorkspace() {
               key={row.period_end}
               className="mt-3 rounded border border-white/15 p-3"
             >
-              <summary>
+              <DisclosureSummary>
                 {row.period_end} · {row.status}
-              </summary>
+              </DisclosureSummary>
               <p className="mt-2 text-sm text-amber-100">{row.reason}</p>
               {row.comparisons?.map((comparison,i)=><div key={i} className="mt-3"><strong>{comparison.status.replaceAll("_"," ")}</strong><p>{comparison.reason}</p>{comparison.target && <p>{comparison.metric?.replaceAll("_"," ")} · Target {comparison.target.operator==='at_least'?'≥ ':''}{comparison.target.lower}{comparison.target.upper!==null?'–'+comparison.target.upper:''}% · Reported {comparison.actual}%</p>}<EvidenceList items={comparison.citations.map(citation=>({citation,requires_visual_review:false}))}/></div>)}
               {row.model_assessments?.map((item,i)=><div key={i} className="mt-3"><strong>AI assessment · {item.status.replaceAll("_"," ")}</strong><p>{item.assessment}</p><EvidenceList items={item.citations.map(citation=>({citation,requires_visual_review:false}))}/></div>)}
@@ -217,7 +218,7 @@ export default function PullWorkspace() {
               key={i}
               className="mt-4 rounded border border-white/15 p-3"
             >
-              <summary>Annual cash and leverage · {annual.status}</summary>
+              <DisclosureSummary>Annual cash and leverage · {annual.status}</DisclosureSummary>
               <a
                 href={sourceLink(annual.source_url)}
                 target="_blank"
@@ -267,7 +268,7 @@ export default function PullWorkspace() {
           </div>
           {data.source_errors.length > 0 && (
             <details className="mt-4">
-              <summary>Source failures ({data.source_errors.length})</summary>
+              <DisclosureSummary>Source failures ({data.source_errors.length})</DisclosureSummary>
               {data.source_errors.map((error, i) => (
                 <p className="mt-2 text-xs" key={i}>
                   {error.stage}: {error.error}
@@ -284,7 +285,7 @@ export default function PullWorkspace() {
 function EvidenceList({items}: {items: Evidence[]}) {
   return <div className="evidence-list">{items.length === 0 && <p className="text-sm text-white/50">Comparable evidence unavailable.</p>}
     {items.slice(0, 3).map((item, i) => <EvidenceButton key={i} citation={item.citation} requiresVisualReview={item.requires_visual_review}/>) }
-    {items.length > 3 && <details className="mt-2 text-sm"><summary>{items.length - 3} more sources</summary>
+    {items.length > 3 && <details className="mt-2 text-sm"><DisclosureSummary>{items.length - 3} more sources</DisclosureSummary>
       {items.slice(3).map((item, i) => <EvidenceButton key={i} citation={item.citation} requiresVisualReview={item.requires_visual_review}/>)}</details>}
   </div>;
 }
@@ -296,9 +297,9 @@ function renderModules(data: Research, names: string[]) {
               key={name}
               className="mt-4 rounded border border-white/15 p-4"
             >
-              <summary>
+              <DisclosureSummary>
                 {name.replaceAll("_", " ")} · {module.status}
-              </summary>
+              </DisclosureSummary>
               {module.facts?.filter((fact): fact is PrimaryFact => typeof fact.metric === "string").map((fact,i)=><div key={i} className="mt-3 text-sm">
                 <p>{fact.metric.replaceAll("_"," ")} · {fact.value} {fact.unit} · {fact.period_end} · {fact.basis}</p>
                 {fact.requires_visual_review && <p className="text-amber-100">Visual review required</p>}
