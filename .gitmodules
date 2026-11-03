@@ -1,0 +1,4 @@
+[submodule "hosting"]
+	path = hosting
+	url = https://github.com/rupam1123/finn.git
+	branch = sites

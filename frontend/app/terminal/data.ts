@@ -2,9 +2,9 @@ export const API = (process.env.NEXT_PUBLIC_API_BASE || '').replace(/\/$/, '');
 export const categories=['results','M&A','fund_raise','management_change','litigation','insider_trading','earnings_call','investor_meetings','credit_rating','dividend','bonus_split','capex','press_release','postal_ballot','agm_egm','pledging','unclassified'];
 export async function request<T>(path:string, options:RequestInit={}) : Promise<T> {
   const response=await fetch(`${API}${path}`,{...options,signal:options.signal || AbortSignal.timeout(20000)});
-  if(!response.ok){const body=await response.json().catch(()=>null);const detail=typeof body?.detail==='string'?body.detail:body?.detail?.message;
+  if(!response.ok){const body=await response.json().catch(()=>null) as {detail?:string|{message?:string}}|null;const detail=typeof body?.detail==='string'?body.detail:body?.detail?.message;
     throw new Error(detail || (response.status===404?'No saved data available.':`Source service returned ${response.status}. Please retry.`));}
-  return response.json();
+  return response.json() as Promise<T>;
 }
 export function label(value:string|undefined|null){return (value||'unavailable').replaceAll('_',' ');}
 export function amount(value:unknown,digits=2){if(value===null||value===undefined||value==='')return '—';const n=Number(value);return Number.isFinite(n)?n.toLocaleString('en-IN',{maximumFractionDigits:digits}):String(value);}

@@ -22,7 +22,7 @@ export default function CompanySearch({value, onChange, onSelect, id = 'pull-sym
         const result = await fetch(`${base}/api/universe?q=${encodeURIComponent(value.trim().slice(0, 60))}`,
           {signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)])});
         if (!result.ok) throw Error();
-        const data = await result.json();
+        const data = await result.json() as {matches?: Company[]};
         if (request !== sequence.current || controller.signal.aborted) return;
         const rows = Array.isArray(data.matches) ? data.matches.filter((row: Company) => typeof row.symbol === "string" && typeof row.company_name === "string").slice(0, 8) : [];
         setMatches(rows);

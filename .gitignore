@@ -47,3 +47,10 @@ backend-test-details.zip
 # Preserve these files on disk; keep the reviewed distributable evidence only.
 verification/*
 !verification/release-source-2026-11-01/
+.deployment-data/
+.sites-checkout/
+hosting/node_modules/
+hosting/dist/
+hosting/.wrangler/
+hosting/.vinext/
+hosting/.sites-runtime/

@@ -59,6 +59,8 @@ type Research = {
   }[];
   source_errors: { stage: string; error: string }[];
 };
+type JobResponse = {id:string; symbol:string; status:string; payload:{stage?:string}};
+type SavedResearch = {data:Research; fetched_at:string; cache_expired:boolean};
 const base = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
 export default function PullWorkspace() {
   const [ticker, setTicker] = useState("INFY"),
@@ -82,7 +84,7 @@ export default function PullWorkspace() {
           signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]),
         });
         if (!response.ok) throw Error();
-        const value = await response.json();
+        const value = await response.json() as JobResponse;
         if (!current()) return;
         setStatus(
           `${value.status}: ${value.payload.stage || "waiting for research"}`,
@@ -99,7 +101,7 @@ export default function PullWorkspace() {
             {signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)])},
           );
           if (!result.ok) throw Error();
-          const saved = await result.json();
+          const saved = await result.json() as SavedResearch;
           if (!current()) return;
           setData(saved.data);
           setJob(null);
@@ -129,7 +131,7 @@ export default function PullWorkspace() {
       const response = await fetch(url, { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]) });
       if (request !== generation.current) return;
       if (response.ok && !refresh) {
-        const saved = await response.json();
+        const saved = await response.json() as SavedResearch;
         if (request !== generation.current) return;
         setData(saved.data);
         setStatus(
@@ -143,7 +145,7 @@ export default function PullWorkspace() {
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]),
       });
       if (!queued.ok) throw Error();
-      const value = await queued.json();
+      const value = await queued.json() as JobResponse;
       if (request !== generation.current) return;
       setJob(value.id);
       setStatus("Research queued. Progress will appear here.");

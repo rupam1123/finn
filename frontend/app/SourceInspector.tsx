@@ -32,7 +32,7 @@ export default function SourceInspector() {
       const base = process.env.NEXT_PUBLIC_API_BASE || "";
       const response = await fetch(`${base}/api/company/${encodeURIComponent(ticker.trim())}`, {signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)])});
       if (!response.ok) {
-        const body = await response.json().catch(() => null);
+        const body = await response.json().catch(() => null) as {detail?: unknown} | null;
         if (request !== generation.current) return;
         setError(response.status === 404 ? "This company has not been ingested yet. Use the Research tab to request primary research for its NSE symbol." :
           response.status === 422 && typeof body?.detail === "string" ? body.detail :

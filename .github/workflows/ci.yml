@@ -59,3 +59,39 @@ jobs:
         run: npm run test:workspace
       - name: Production build
         run: npm run build
+
+  sync-hosted:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          submodules: recursive
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Sync validated interface source to the Sites branch
+        shell: bash
+        run: |
+          gh auth setup-git
+          git -C hosting fetch origin sites
+          git -C hosting checkout --detach origin/sites
+          python scripts/sync_sites_source.py
+          git -C hosting add -- app public backend/calendar.json .openai/synced-files.json
+          if git -C hosting diff --cached --quiet; then
+            echo "Hosted interface already matches this source."
+            exit 0
+          fi
+          git -C hosting config user.name 'github-actions[bot]'
+          git -C hosting config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C hosting commit -m 'Sync validated FINN interface from main'
+          git -C hosting push origin HEAD:sites
+          gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref sites
