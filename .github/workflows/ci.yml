@@ -59,6 +59,8 @@ jobs:
         run: npm run test:workspace
       - name: Touch selection checks
         run: npm run test:touch
+      - run: npm run test:assistant
+      - run: npm run test:welcome
       - name: Production build
         run: npm run build
 

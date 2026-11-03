@@ -16,7 +16,9 @@
     "test:theme": "node --import tsx tests/theme.mjs",
     "test:fluid": "node --import tsx tests/fluid.mjs",
     "test:polish": "node --import tsx tests/polish.mjs",
-    "test:touch": "node --import tsx tests/slide-selection.mjs"
+    "test:touch": "node --import tsx tests/slide-selection.mjs",
+    "test:assistant": "node --import tsx tests/assistant.mjs",
+    "test:welcome": "node --import tsx tests/welcome.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "5.3.0",

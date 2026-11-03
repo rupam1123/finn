@@ -1,6 +1,6 @@
 // Delegated pointer gestures: preview in one animation frame, commit once on
 // release. Normal taps, native scrolling and keyboard activation stay native.
-const groups='.mobile-nav,.window-pills,.quick-categories,.feed-tabs,.segmented,.chart-mode,.research-nav,.company-context nav,.radar-summary,.showcase-pills';
+const groups='.mobile-nav,.window-pills,.quick-categories,.feed-tabs,.segmented,.chart-mode,.research-nav,.company-context nav,.radar-summary,.showcase-pills,.assistant-topics';
 const choices=':scope > a[href],:scope > button[aria-pressed]';
 type Choice={element:HTMLElement;rect:DOMRect};
 type Gesture={id:number;group:HTMLElement;items:Choice[];x:number;y:number;startX:number;startY:number;bounds:DOMRect;active:boolean;preview:HTMLElement|null};

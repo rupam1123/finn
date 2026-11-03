@@ -46,6 +46,8 @@ def create_app(db_path=None):
 
     from .workspace_api import install,annotate_quotes
     install(app,store,checked)
+    from .assistant import install as install_assistant
+    install_assistant(app, store, checked, public_review, origins)
 
     @app.get("/health")
     def health():

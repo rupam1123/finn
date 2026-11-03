@@ -21,6 +21,7 @@ def main():
     if args.use_model and os.getenv('FINN_PUBLIC_REVIEW')=='1':p.error('Public review is read-only; model execution is disabled.')
     if args.use_model and not os.getenv('GEMINI_API_KEY'):p.error('--use-model requires GEMINI_API_KEY in your environment')
     env=dict(os.environ,FINN_DB=str(Path(args.db).resolve()))
+    env['FINN_ASSISTANT_USE_MODEL']='1' if args.use_model else '0'
     worker=[sys.executable,'-m','finn.pull_jobs','--db',env['FINN_DB'],'--watch']
     if args.use_model:worker.append('--use-model')
     if args.recover:worker.append('--recover')

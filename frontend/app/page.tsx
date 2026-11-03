@@ -1,2 +1,2 @@
-import {redirect} from 'next/navigation';
-export default function Page(){redirect('/inbox')}
+import Welcome from './workspace/Welcome';
+export default function Page(){return <Welcome/>}

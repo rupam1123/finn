@@ -1,0 +1,232 @@
+{
+  "scope": "Saved-data selection only. No upstream or model calls, semantic or device acceptance.",
+  "companies": 25,
+  "topic_views_checked": 100,
+  "results": [
+    {
+      "symbol": "ASTRAL",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 5,
+        "cash": 7,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "CAMS",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 8,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "COFORGE",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 4,
+        "cash": 8,
+        "risks": 7
+      }
+    },
+    {
+      "symbol": "DEEPAKNTR",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 6
+      }
+    },
+    {
+      "symbol": "DIXON",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 6,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "ETERNAL",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 5,
+        "cash": 6,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "HDFCBANK",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 4,
+        "risks": 7
+      }
+    },
+    {
+      "symbol": "INFY",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "JYOTHYLAB",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "KPIL",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "KPITTECH",
+      "selected_primary_passages": {
+        "summary": 7,
+        "guidance": 5,
+        "cash": 7,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "LAURUSLABS",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 7,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "LT",
+      "selected_primary_passages": {
+        "summary": 6,
+        "guidance": 4,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "PERSISTENT",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "POLYCAB",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 7,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "RELIANCE",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "SONACOMS",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 7,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "SUNPHARMA",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 5,
+        "cash": 7,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "SUZLON",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 5,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "SYNGENE",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "TCS",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 5,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "TITAN",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 6,
+        "cash": 8,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "TMPV",
+      "selected_primary_passages": {
+        "summary": 8,
+        "guidance": 4,
+        "cash": 4,
+        "risks": 8
+      }
+    },
+    {
+      "symbol": "TRENT",
+      "selected_primary_passages": {
+        "summary": 7,
+        "guidance": 6,
+        "cash": 4,
+        "risks": 7
+      }
+    }
+  ]
+}

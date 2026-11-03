@@ -1,9 +1,9 @@
 "use client";
 import {memo,useCallback,useEffect,useRef,useState} from 'react';
-import {ArrowUpRight,ArrowRight,Check,AudioLines,ChartNoAxesCombined,Command,FileCheck2,Inbox as InboxIcon,Layers,PanelLeftClose,Search,Settings2,ShieldCheck,Sparkles,QrCode,MessageSquare,RefreshCw,ExternalLink} from 'lucide-react';
+import {ArrowRight,Check,AudioLines,ChartNoAxesCombined,FileCheck2,Inbox as InboxIcon,Layers,Search,Settings2,ShieldCheck,QrCode,MessageSquare,RefreshCw} from 'lucide-react';
 import Inbox from './Inbox';import Research from './Research';import Portfolio from './Portfolio';import SourceInspector from '../SourceInspector';import CompanySearch from '../CompanySearch';import PwaStatus from '../PwaStatus';import Sheet from '../Sheet';
 import {resetBrowserPreferences} from '../privacy';
-import {Holding,request,date,amount} from './data';import {Failure,Status,useStored} from './ui';
+import {Holding,request,amount} from './data';import {Failure,Status,useStored} from './ui';
 export type View='inbox'|'research'|'portfolio'|'sources';
 const navigation=[{view:'inbox',label:'Signal Inbox',icon:InboxIcon},{view:'research',label:'Research',icon:ChartNoAxesCombined},{view:'portfolio',label:'Portfolio',icon:Layers},{view:'sources',label:'Source health',icon:ShieldCheck}] as const;
 const SavedInbox=memo(Inbox),SavedResearch=memo(Research),SavedPortfolio=memo(Portfolio);

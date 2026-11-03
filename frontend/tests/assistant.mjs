@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import {JSDOM} from 'jsdom';
+const dom=new JSDOM('<div id="root"></div>',{url:'http://localhost:3000/'});
+Object.assign(globalThis,{window:dom.window,self:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,HTMLInputElement:dom.window.HTMLInputElement,Event:dom.window.Event,localStorage:dom.window.localStorage,IS_REACT_ACT_ENVIRONMENT:true});
+Object.defineProperty(globalThis,'navigator',{configurable:true,value:dom.window.navigator});
+dom.window.HTMLDialogElement.prototype.showModal=function(){this.open=true};dom.window.HTMLDialogElement.prototype.close=function(){this.open=false};
+const React=await import('react');globalThis.React=React;const {createRoot}=await import('react-dom/client');const root=createRoot(document.getElementById('root'));
+const mod=async p=>{const m=await import(p);return m.savedPassages||m.clearReadCache||m.savedCoverage?m:m.default};
+const core=await mod('../app/workspace/assistant-core.ts'),cache=await mod('../app/workspace/cache.ts'),coverage=await mod('../app/workspace/SavedCoverage.tsx');
+const m=await import('../app/workspace/Assistant.tsx'),Assistant=typeof m.default==='function'?m.default:m.default.default;
+const cite={sha256:'a'.repeat(64),url:'https://issuer.example/report.pdf',page:2,quote:'The primary source reports revenue of INR 100 crore for FY2026 on a consolidated basis.'};
+const data={symbol:'TCS',sources:[{sha256: cite.sha256,url: cite.url,page_count:3}],modules:{business_snapshot:{excerpts:[{citation:cite},{citation:cite}]},forward_guidance:{excerpts:[{citation:{...cite,page:3,quote:'Management has not provided an explicit numerical guidance target in this passage.'}}]}},say_do:{observed_periods:4,requested_quarters:4,ledger:[{comparisons:[{status:'below_target'},{status:'not_comparable'}]}]}};
+const checks=[],calls=[];let enabled=false;
+globalThis.fetch=async (url,options={})=>{calls.push({path:String(url),method:options.method||'GET',body:options.body});return {ok:true,json:async()=>String(url).includes('capabilities')?{generation_enabled:enabled}:options.method==='POST'?{model:'test-model',points:[{text:'The source reports INR 100 crore in FY2026.',citations:[cite]}]}:{data,fetched_at:'2026-11-01T10:00:00Z'}}};
+const render=async e=>React.act(async()=>root.render(e));const click=async el=>{assert.ok(el);await React.act(async()=>el.click())};
+try{
+ assert.equal(core.savedPassages(data).length,1);assert.equal(core.savedPassages(data,'cash').length,0);assert.equal(core.savedPassages(data,'summary','dividends').length,0);checks.push('Deduplicates primary passages and abstains when the requested topic or question has no matching evidence');
+ for(const change of [{sha256:'b'.repeat(64)},{url:'javascript:alert(1)'},{page:9},{page:0}]){const altered=structuredClone(data);altered.modules.business_snapshot.excerpts=[{citation:{...cite,...change}}];assert.equal(core.savedPassages(altered).length,0)}checks.push('Rejects unknown hashes, changed URLs and invalid document pages');
+ const altered=structuredClone(data);altered.modules.business_snapshot.excerpts=[{citation:cite,requires_visual_review:true}];assert.equal(core.savedPassages(altered).length,0);checks.push('Unreviewed visual evidence is excluded from text summaries');
+ assert.deepEqual(core.auditCoverage(data),{periods:4,requested:4,matched:1});checks.push('Four periods with sources remain distinct from one matched numerical comparison');
+ assert.deepEqual(coverage.savedCoverage({TCS:{filings:{fetched_at:'2026-10-31T10:00:00Z'}},INFY:{filings:{}},LT:{filings:{fetched_at:'2026-10-30T10:00:00Z'}}}),{oldest:'2026-10-30T10:00:00Z',newest:'2026-10-31T10:00:00Z',available:2,total:3});checks.push('Saved coverage shows the full date range and missing companies rather than the selected window as data freshness');
+ await render(React.createElement(Assistant,{ticker:'TCS',onClose(){}}));await React.act(async()=>{});assert.ok(document.body.textContent.includes('Saved-source guide'));assert.ok(!document.body.textContent.includes('Summarise with AI'));assert.equal(calls.filter(c=>c.method==='POST').length,0);assert.equal(document.querySelector('.quiet-disclosure').open,false);checks.push('Read-only assistant opens without a model call and keeps coverage details nested');
+ await click([...document.querySelectorAll('.assistant-topics button')].find(b=>b.textContent==='Cash & debt'));assert.ok(document.body.textContent.includes('No matching readable passage'));checks.push('Missing cash evidence remains a visible gap');
+ await render(null);cache.clearReadCache();enabled=true;await render(React.createElement(Assistant,{ticker:'TCS',onClose(){}}));await React.act(async()=>{});assert.equal(calls.filter(c=>c.method==='POST').length,0);
+ await click([...document.querySelectorAll('button')].find(b=>b.textContent==='Summarise with AI'));assert.equal(calls.filter(c=>c.method==='POST').length,1);assert.ok(document.body.textContent.includes('AI draft · review required'));assert.ok(document.querySelector('.assistant-point').textContent.includes('INR 100 crore'));assert.equal(localStorage.length,0);checks.push('Enabled owner generation runs only after an explicit click and retains source controls without saving chat in browser storage');
+ console.log(JSON.stringify({passed:true,checks,scope:'Synthetic React/jsdom and source-selection regressions; no live model or browser acceptance.'},null,2));
+}finally{await render(null);await React.act(async()=>root.unmount());dom.window.close()}

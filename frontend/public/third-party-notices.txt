@@ -7011,3 +7011,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+Swiftz design reference and welcome illustration/progress assets: Galuh, Figma Community file MCzGH0Vey4okYFpBcr7itx, launch frames 1584:2484 and 1585:563. Downloaded 4 November 2026. Community availability is not a grant of unrestricted redistribution rights; operator review remains required.
+Company logo assets: identity/trademark artwork retrieved from CompaniesMarketCap. Individual source URLs are in app/workspace/company-logos.json. No endorsement or ownership of third-party trademarks is implied.

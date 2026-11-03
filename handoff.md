@@ -2,6 +2,10 @@
 
 Prepared 1 November 2026. This document describes the consolidated source pack. Read it before older checkpoints. The user's existing Windows project is usually `X:\finn_day1_verification_kit\finn`.
 
+**4 November Swiftz/source update:** root welcome route, solid surfaces, local company logos, unused-import cleanup and judge/manual documentation are recorded in [release readiness](docs/release-readiness-2026-11-04.md). GitHub source upload is authorised; deployment stays paused.
+
+**4 November usability update:** simplified first views and a saved-primary-source assistant are implemented locally. Explicit owner AI summaries are opt-in; public review stays model-free. Read [the upgrade and verification scope](docs/usability-assistant-upgrade-2026-11-04.md). Publication remains paused. Browser control is disabled, so this update has no new rendered-browser or actual-device acceptance result.
+
 **Local verification update — 3 November 2026:** the actual Windows database now passes **58/58** engineering acceptance checks, 391 backend tests, 60 frontend checks and the production build. The historical 52/58 references below describe the delivered pack. Read [current brief coverage and remaining limits](docs/assessment-coverage-2026-11-03.md) and the [repair evidence](verification/acceptance-repair-2026-11-03/README.md) before continuing. Semantic/source-depth, actual-device and release gates remain separate.
 
 ## What the user wants
