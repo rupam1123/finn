@@ -29,3 +29,5 @@ Use the Site-owning account; preserve the existing Site ID and audience. Verify 
 ## Final pass results
 
 Compiler-confirmed unused-import checks passed. Existing workspace tests plus pointer/assistant checks and four new welcome/asset checks passed (81 UI checks in total), with the active-theme regression rerun after its update. Twenty local company-logo files passed PNG/dimension checks; TMPV, JYOTHYLAB, SONACOMS and CAMS retain the initials fallback. Both production builds, hosted TypeScript/read-model tests and the router export guard are checked before the source push. Browser verification remains pending, not passed.
+
+The welcome page is also checked in generated production HTML before browser hydration. Evidence URL handling is mounted only inside the research workspace so the landing page does not wait for that client boundary. GitHub Actions passed for the initial source upload; the final rendering follow-up runs the same checks plus this production HTML assertion.

@@ -1,4 +1,5 @@
 'use client';
+import EvidenceLayer from './EvidenceLayer';
 import Link from 'next/link';import {usePathname,useRouter} from 'next/navigation';import {createContext,useCallback,useContext,useEffect,useMemo,useRef,useState} from 'react';
 import {Search,Settings2,Inbox,ChartNoAxesCombined,Layers,ShieldCheck,Check,ArrowRight} from 'lucide-react';
 import {toast} from '../Toasts';
@@ -34,4 +35,4 @@ function WorkspaceShell({children}:{children:React.ReactNode}){
 function Logo(){return <svg className="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 35V12.5C7 5.9 11.9 2 18.5 2H34V9H18.5C15.6 9 14 10.5 14 13V15H29V22H14V35H7Z" fill="currentColor"/><path d="M24 28H34V35H24V28Z" fill="currentColor" opacity=".4"/></svg>}
 function NavGlyph({view}:{view:string}){return <svg className="nav-glyph" viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">{view==='inbox'?<><path className="nav-glyph-fill" d="M4 8.2 10.1 3a3 3 0 0 1 3.8 0L20 8.2V18a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z"/><path d="M8 12h8M9 16h6"/></>:view==='research'?<><rect className="nav-glyph-fill" x="3" y="4" width="18" height="17" rx="5"/><path d="m7 15 3-4 3 2 4-6M14 7h3v3"/></>:view==='portfolio'?<><rect className="nav-glyph-fill" x="3" y="3" width="7" height="10" rx="2.3"/><rect x="14" y="3" width="7" height="6" rx="2.3"/><rect x="3" y="17" width="7" height="4" rx="2"/><rect className="nav-glyph-fill" x="14" y="13" width="7" height="8" rx="2.3"/></>:<><path className="nav-glyph-fill" d="M12 2.5 20 6v6c0 4.3-3 7.6-8 9.5-5-1.9-8-5.2-8-9.5V6Z"/><path d="m8.4 12 2.3 2.3 4.9-5"/></>}</svg>}
 
-export default function Workspace({children}:{children:React.ReactNode}){const path=usePathname();return path==='/'?<>{children}</>:<WorkspaceShell>{children}</WorkspaceShell>}
+export default function Workspace({children}:{children:React.ReactNode}){const path=usePathname();return path==='/'?<>{children}</>:<EvidenceLayer><WorkspaceShell>{children}</WorkspaceShell></EvidenceLayer>}

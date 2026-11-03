@@ -63,6 +63,8 @@ jobs:
       - run: npm run test:welcome
       - name: Production build
         run: npm run build
+      - name: Welcome first-response check
+        run: node tests/welcome-build.mjs
 
   sync-hosted:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
