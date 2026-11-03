@@ -1,49 +1,356 @@
-/* Swiftz reference: launch 1584:2484 / 1585:563; home 1584:2839 / 1584:4386.
-   SF Pro is system-only; DM Sans remains the bundled fallback. Solid surfaces. */
-:root{--font-ui:'SF Pro Display',-apple-system,BlinkMacSystemFont,'DM Sans','Segoe UI',sans-serif;--swiftz-lime:#96f15b;--swiftz-tile:#f5f5f5;--paper:#fff;--surface:#f5f5f5;--ink:#000;--muted:#626262;--line:#dcdcdc;--green:#286400;--accent:#286400;--f-accent:#286400;--f-on-accent:#000;--f-selected:#96f15b;--f-panel:#f5f5f5;--f-solid:#f5f5f5;--f-glass:#f5f5f5;--f-card-edge:#dedede;--f-card-solid:#f5f5f5;--f-chrome-solid:#fff;--f-inset-solid:#ebebeb;--f-control-solid:#ebebeb;--f-edge:#dedede;--f-shadow:none;--f-chip:#eaeaea;--f-positive:#286400;--f-negative:#b70b18;--f-hero:#f5f5f5;--f-hero-text:#000;--f-hero-muted:#626262;--f-menu:#fff;--f-focus:#286400;--f-chart:#286400;--f-chart-end:#53d300;--f-chart-volume:#a5bf93;--f-chart-grid:#dedede;--f-chart-text:#626262;--f-series-one:#397b19;--f-series-two:#666;--f-series-three:#8b619e;--f-volume-base:#8a9384;--market-up:#286400;--market-up-end:#53d300;--market-down:#b70b18;--market-down-end:#dc1616;--market-flat:#626262;--market-flat-end:#989898;--feedback-success:#286400;--feedback-info:#4f5d46;--feedback-warning:#805400;--feedback-error:#b70b18;--dock-glass:#fff;--dock-ink:#626262;--dock-active:#96f15b;--dock-active-ink:#000;--dock-edge:#dedede;--search-glass:#96f15b;--search-ink:#000;--table-body:#fff;--table-head:#eaeaea;--table-alt:#f5f5f5;--table-hover:#e5f8d8;--table-border:#d4d4d4;--range-track:#dedede;color-scheme:light}
-html[data-theme=dark]{--swiftz-tile:#1a1a1a;--paper:#000;--surface:#1a1a1a;--ink:#fff;--muted:#bbb;--line:#363636;--green:#96f15b;--accent:#96f15b;--f-accent:#96f15b;--f-panel:#1a1a1a;--f-solid:#1a1a1a;--f-glass:#1a1a1a;--f-card-edge:#363636;--f-card-solid:#1a1a1a;--f-chrome-solid:#000;--f-inset-solid:#272727;--f-control-solid:#272727;--f-edge:#363636;--f-chip:#292929;--f-positive:#96f15b;--f-negative:#ff7979;--f-hero:#1a1a1a;--f-hero-text:#fff;--f-hero-muted:#bbb;--f-menu:#1a1a1a;--f-focus:#96f15b;--f-chart:#96f15b;--f-chart-end:#53d300;--f-chart-volume:#687c58;--f-chart-grid:#363636;--f-chart-text:#bbb;--f-series-one:#96f15b;--f-series-two:#bcbcbc;--f-series-three:#d4b7e5;--f-volume-base:#929d8a;--market-up:#96f15b;--market-down:#ff7979;--market-flat:#bbb;--feedback-success:#96f15b;--feedback-info:#bbb;--feedback-warning:#f4d9a3;--feedback-error:#ff7979;--dock-glass:#000;--dock-ink:#bbb;--dock-edge:#363636;--table-body:#141414;--table-head:#303030;--table-alt:#202020;--table-hover:#283420;--table-border:#414141;--range-track:#454545;color-scheme:dark}
-html body{background:var(--paper);color:var(--ink);font-family:var(--font-ui)}
-html body *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
-html body :is(h1,h2,h3,h4,.page-heading h1,.company-context-title h1,.brand-lockup>span,.footer-wordmark,.pulse-story h2){font-family:var(--font-ui);color:var(--ink);letter-spacing:-.02em}
-html body :is(.sidebar,.topbar,.company-context,.mobile-nav,.evidence-sheet,.sheet-header,.header-search form,.company-options,.global-search,.legal-card){background:var(--f-menu)!important;border-color:var(--line);color:var(--ink)}
-html body .structured :is(.filing-card,.research-card,.holding-card,.quarter-card,.health-grid article,.signal-mix,.return-map,.source-inspector,.research-launch,.pulse-story,.digest-summary,.coverage-card){background:var(--surface)!important;border:1px solid var(--line);border-radius:25px;color:var(--ink)}
-html body .structured :is(.research-launch,.pulse-story){border-radius:30px}
-html body :is(.company-monogram,.comparison,.analysis-note,.guidance-panel,.engine-telemetry dl,.setting-info,.person-card,.empty-state,.source-row,.financial-visual){background:var(--surface);border-color:var(--line);color:var(--ink)}
-html body .structured :is(.primary-action,.dock-search),html body .evidence-sheet .primary-action{background:#96f15b!important;color:#000!important;border-color:transparent;border-radius:20px}
-html body :is(.outline-button,.action-link,.window-pills,.quick-categories,.feed-tabs,.segmented,.chart-mode,.assistant-topics button){background:var(--surface);color:var(--ink);border-color:var(--line)}
-html body .structured :is(.mobile-nav a[aria-current=page],.sidebar nav a[aria-current=page],.company-context nav a[aria-current=page],button[aria-pressed=true]),html body .assistant-topics button[aria-pressed=true]{background:#96f15b!important;color:#000!important;border-color:transparent}
-html body .structured :is(.research-launch,.pulse-story) :is(h2,p,.section-label,.caption,.breadth-counts strong){color:var(--ink)!important}
-html body .structured :is(.research-launch,.pulse-story) :is(p,.caption){color:var(--muted)!important}
-html body .structured .mobile-dock .mobile-nav{background:var(--paper)!important;border:1px solid var(--line);border-radius:26px}
-html body .structured :is(.table-scroll,.financial-table){background:var(--table-body);border:1px solid var(--table-border);border-radius:14px}
-html body .structured :is(.table-scroll,.financial-table) :is(th,td){border-color:var(--table-border);color:var(--ink)}
-html body .structured :is(.table-scroll,.financial-table) thead th{background:var(--table-head)}
-html body .structured :is(.table-scroll,.financial-table) tbody tr:nth-child(even){background:var(--table-alt)}
-html body .structured :is(.table-scroll,.financial-table) tbody tr:hover{background:var(--table-hover)}
-html body :is(.research-card p,.quarter-card p,.coverage-card p,.source-row p,.source-row code,.caption,.section-label,.eyebrow,.company-heading p,.research-status){color:var(--muted)}
-html body .evidence-sheet::backdrop{background:#0009}
-html body .evidence-sheet{border-color:var(--line);background:var(--f-menu)!important;color:var(--ink)}
-html body .evidence-quote{background:var(--surface);color:var(--ink);border-color:var(--line)}
-html body .evidence-quote mark{background:var(--f-chip);color:var(--ink)}
-html body .citation-pill{background:var(--f-chip);color:var(--f-accent);border-color:var(--line)}
-html body :is(input,select){color:var(--ink);border-color:var(--line);accent-color:#96f15b}
-html body input[type=range]{height:4px;border-radius:20px;background:var(--range-track);accent-color:var(--f-accent)}
-.company-logo{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:45px;height:45px;border-radius:50%;background:#fff;border:1px solid #e2e2e2;overflow:hidden;color:#171717;font-size:12px;font-weight:600}
-.company-logo img{display:block;object-fit:contain;width:33px;height:33px}.company-name-lockup{display:flex;gap:12px;align-items:center}.compact-signal .company-logo{width:30px;height:30px}.compact-signal .company-logo img{width:23px;height:23px}.launch-companies .company-logo{grid-row:span 2}
-.welcome-page{min-height:100svh;background:var(--paper);color:var(--ink);display:flex;justify-content:center;padding:0 20px}
-.welcome-shell{width:100%;max-width:390px;min-height:min(932px,100svh);display:flex;flex-direction:column;align-items:center;padding:24px 0 max(26px,env(safe-area-inset-bottom));text-align:center}
-.welcome-top{display:flex;justify-content:space-between;align-items:center;width:100%;height:44px}.welcome-top>a{display:flex;gap:8px;align-items:center;color:var(--ink);font-size:24px;letter-spacing:-1px}.welcome-top .icon-button{background:var(--surface);color:var(--ink)}
-.welcome-art{width:300px;height:324px;max-width:100%;margin:50px auto 58px;display:flex;align-items:center;justify-content:center}.welcome-art img{display:block;width:300px;height:324px;max-width:100%;object-fit:contain;transform:scaleX(-1)}
-.welcome-copy h1{font-size:50px;font-weight:500;line-height:55px;letter-spacing:-1px;margin:0;color:var(--ink)}.welcome-copy p{font-size:18px;line-height:26px;color:var(--muted);margin:24px 0 0}.welcome-progress{margin:30px 0 36px}.welcome-actions{width:100%;margin-top:auto}.welcome-primary{display:flex;align-items:center;justify-content:center;min-height:60px;background:#96f15b;color:#000;border-radius:20px;font-size:18px;font-weight:500}.welcome-secondary{display:inline-flex;align-items:center;min-height:48px;color:var(--muted);font-size:16px;margin-top:10px}
-.welcome-page a:focus-visible{outline:2px solid var(--f-focus);outline-offset:5px}
-@media(max-height:780px){.welcome-art{margin:24px auto 28px;height:240px;width:222px}.welcome-art img{width:222px;height:240px}.welcome-copy h1{font-size:42px;line-height:46px}.welcome-copy p{margin-top:18px;font-size:16px;line-height:24px}.welcome-progress{margin:22px 0}.welcome-shell{min-height:100svh}}
-@media(max-width:360px){.welcome-copy h1{font-size:38px;line-height:43px}.welcome-page{padding-inline:18px}}
-@media(prefers-reduced-motion:reduce){html body *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-@media(forced-colors:active){html body .structured :is(button[aria-pressed=true],a[aria-current=page]),.welcome-primary{background:Highlight!important;color:HighlightText!important;border:1px solid Highlight}html body :focus-visible{outline:2px solid Highlight}}
+/* Swiftz Home/Market: 1584:2839, 1584:4386, 1584:3177, 1586:4375.
+   Presentation only: keep FINN's route geometry, content, icons and touch targets.
+   SF Pro Display is a local/system font; no proprietary font is redistributed.
+   Small text and semantic colors use contrast-adjusted variants of the reference. */
+:root {
+  --font-ui: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'DM Sans', 'Segoe UI', sans-serif;
+  --swiftz-lime: #96f15b;
+  --swiftz-tile: #f5f5f5;
+  --paper: #f6f7f4;
+  --surface: #ffffff;
+  --ink: #000000;
+  --muted: #626262;
+  --line: #d5dccf;
+  --green: #286400;
+  --accent: #286400;
+  --f-accent: #286400;
+  --f-on-accent: #000000;
+  --f-selected: var(--swiftz-lime);
+  --f-panel: #ffffff;
+  --f-solid: #f1f4ec;
+  --f-glass: #ffffffc7;
+  --f-card-edge: #d9dfd2;
+  --f-card-solid: #ffffff;
+  --f-chrome-solid: #ffffff;
+  --f-inset-solid: #edf2e6;
+  --f-control-solid: #f1f4ec;
+  --table-body: #ffffff;
+  --table-head: #e8efdf;
+  --table-alt: #f6f8f2;
+  --table-hover: #edf4e3;
+  --table-border: #d1dbc5;
+  --range-track: #d4ddc9;
+  --f-edge: #ffffffeb;
+  --f-shadow: 0 3px 14px #24331607, inset 0 1px 0 #ffffff;
+  --f-chip: #e9ece6b8;
+  --f-positive: #207600;
+  --f-negative: #b70b18;
+  --f-hero: linear-gradient(125deg, #ffffff94, #f5f5f5df 60%, #96f15b13), #f5f5f5;
+  --f-hero-text: #000000;
+  --f-hero-muted: #565950;
+  --f-menu: #f5f5f5ed;
+  --f-focus: #286400;
+  --f-chart: #207600;
+  --f-chart-end: #53d300;
+  --f-chart-volume: #a5bf93;
+  --f-chart-grid: #dededb;
+  --f-chart-text: #626262;
+  --f-series-one: #397b19;
+  --f-series-two: #666666;
+  --f-series-three: #8b619e;
+  --f-volume-base: #8a9384;
+  --market-up: #207600;
+  --market-up-end: #53d300;
+  --market-down: #b70b18;
+  --market-down-end: #dc1616;
+  --market-flat: #626262;
+  --market-flat-end: #989898;
+  --feedback-success: #286400;
+  --feedback-info: #4f5d46;
+  --feedback-warning: #805400;
+  --feedback-error: #b70b18;
+  --dock-glass: linear-gradient(135deg, #ffffffa8, #ebedeb8f);
+  --dock-ink: #242424;
+  --dock-active: #96f15b;
+  --dock-active-ink: #000000;
+  --dock-edge: #ffffffed;
+  --search-glass: linear-gradient(135deg, #b8f992d9, #96f15bd9);
+  --search-ink: #000000;
+}
 
-html body .structured [data-slide-active=true]>[data-slide-preview=true]{background:#96f15b!important;color:#000!important}
-html body .structured .mobile-nav[data-slide-active=true] a[aria-current=page]:not([data-slide-preview=true]){background:var(--paper)!important;color:var(--muted)!important}
+html[data-theme=dark] {
+  --swiftz-tile: #1a1a1a;
+  --paper: #000000;
+  --surface: #1a1a1a;
+  --ink: #ffffff;
+  --muted: #bbbbbb;
+  --line: #363932;
+  --green: #96f15b;
+  --accent: #96f15b;
+  --f-accent: #96f15b;
+  --f-on-accent: #000000;
+  --f-selected: var(--swiftz-lime);
+  --f-panel: linear-gradient(145deg, #ffffff06, #1a1a1adb), #1a1a1acf;
+  --f-solid: #1a1a1a;
+  --f-glass: #1a1a1ab8;
+  --f-card-edge: #383e31;
+  --f-card-solid: #1a1a1a;
+  --f-chrome-solid: #141612;
+  --f-inset-solid: #20251b;
+  --f-control-solid: #20251b;
+  --table-body: #171b14;
+  --table-head: #2b3622;
+  --table-alt: #1d2318;
+  --table-hover: #29351f;
+  --table-border: #3a4531;
+  --range-track: #404b35;
+  --f-edge: #ffffff24;
+  --f-shadow: 0 10px 30px #00000026, inset 0 1px 0 #ffffff12, inset 0 -1px 0 #00000033;
+  --f-chip: #30342bb8;
+  --f-positive: #96f15b;
+  --f-negative: #ff7979;
+  --f-hero: linear-gradient(125deg, #ffffff08, #1a1a1adb 60%, #96f15b09), #1a1a1a;
+  --f-hero-text: #ffffff;
+  --f-hero-muted: #bbbbbb;
+  --f-menu: #1a1a1aeb;
+  --f-focus: #96f15b;
+  --f-chart: #96f15b;
+  --f-chart-end: #53d300;
+  --f-chart-volume: #687c58;
+  --f-chart-grid: #30302e;
+  --f-chart-text: #bbbbbb;
+  --f-series-one: #96f15b;
+  --f-series-two: #bcbcbc;
+  --f-series-three: #d4b7e5;
+  --f-volume-base: #929d8a;
+  --market-up: #96f15b;
+  --market-up-end: #53d300;
+  --market-down: #ff7979;
+  --market-down-end: #ffaaaa;
+  --market-flat: #bbbbbb;
+  --market-flat-end: #dedede;
+  --feedback-success: #96f15b;
+  --feedback-info: #c3d8b5;
+  --feedback-warning: #f2cc86;
+  --feedback-error: #ff9d9d;
+  --dock-glass: linear-gradient(135deg, #4a4a4a80, #1a1a1aa8);
+  --dock-ink: #dddddd;
+  --dock-active: #96f15b;
+  --dock-active-ink: #000000;
+  --dock-edge: #ffffff40;
+  --search-glass: linear-gradient(135deg, #b8f992e6, #96f15bd9);
+  --search-ink: #000000;
+}
 
-:root{--chart-line:var(--f-chart);--chart-end:var(--f-chart-end);--chart-area:var(--f-chart-volume);--chart-grid:var(--f-chart-grid);--chart-text:var(--f-chart-text);--chart-volume:var(--f-chart-volume)}
-html body .badge-neutral{background:var(--f-chip);color:var(--ink);border-color:var(--line)}
-html body .badge-green{background:var(--table-hover);color:var(--f-positive);border-color:var(--line)}
+/* Figma uses -1% tracking. Keep FINN's existing text sizes and line heights. */
+:root body,
+:root :is(button, input, select, textarea, h1, h2, h3, h4, em, blockquote,
+  .placeholder-title, .mix-number, .mix-caption, .app-toast, .footer-wordmark,
+  .mobile-brand strong, .mobile-nav a, .context-price strong, .radar-summary strong,
+  .three-metrics strong, .chart-value strong, .metric-pair strong, .telemetry strong,
+  .priority, .quarter-heading strong, .ratio-row strong, .breadth-counts strong,
+  .health-grid article > strong) {
+  font-family: var(--font-ui);
+}
+body { letter-spacing: -.01em; background: radial-gradient(ellipse at 90% 5%, #96f15b08, transparent 38%), var(--paper); }
+html[data-theme=dark] body { background: radial-gradient(ellipse at 90% 5%, #96f15b05, transparent 38%), var(--paper); }
+body :is(h1, h2, h3, h4) { letter-spacing: -.01em; }
+body :is(strong, b) { font-weight: 600; }
+/* Retain the existing one-line Inbox subtitle with the wider system-font fallback. */
+@media (max-width: 600px) {
+  .structured .page-heading:has(#inbox-title) p { font-size: 11px; line-height: 20.4px; }
+}
+
+/* Rounded neutral tiles, with the highlights of the liquid-glass reference. */
+.structured :is(.filing-card, .research-card, .quarter-card, .holding-card,
+  .health-grid article, .source-row, .signal-mix, .return-map, .source-inspector,
+  .radar-controls) { border-radius: 25px; }
+.structured :is(.research-launch, .pulse-story), .legal-card { border-radius: 30px; }
+.structured .filing-card.compact-signal { background: var(--f-panel) !important; }
+.structured .ribbon-chip { background: var(--f-panel); box-shadow: var(--f-shadow); }
+.structured .ribbon-chip strong { color: var(--market-up); }
+.structured .ribbon-chip strong.negative { color: var(--market-down); }
+.structured :is(.primary-action, .outline-button, .action-link, .quick-categories button,
+  .showcase-pills button) { border-radius: 20px; }
+.structured .primary-action,
+.structured :is(.quick-categories, .window-pills, .showcase-pills) button[aria-pressed=true],
+.structured .market-card :is(.chart-mode, .segmented) button[aria-pressed=true] {
+  color: var(--f-on-accent); background: var(--swiftz-lime); border-color: transparent;
+  box-shadow: inset 0 1px #ffffff80, 0 4px 12px #00000009;
+}
+.structured .sidebar nav a[aria-current=page] { background: var(--f-chip); color: var(--ink); }
+.structured .primary-action:hover { background: var(--swiftz-lime); filter: brightness(.97); }
+.structured :is(.topbar, .company-context) { -webkit-backdrop-filter: blur(20px) saturate(115%); backdrop-filter: blur(20px) saturate(115%); }
+.structured :is(.global-search, .header-search form) { background: var(--f-glass); }
+.structured :is(.global-search, .header-search form, .mobile-dock .mobile-nav, .dock-search) {
+  -webkit-backdrop-filter: blur(18px) saturate(120%); backdrop-filter: blur(18px) saturate(120%);
+}
+.structured .mobile-dock .mobile-nav { box-shadow: 0 8px 28px #00000024, inset 0 1px #ffffff60, inset 0 -1px #00000019; }
+.structured .dock-search { box-shadow: 0 6px 24px #0000001a, inset 0 1px #ffffffb3; }
+.structured .dock-search::after { border-color: var(--dock-edge); }
+.structured .mobile-dock .mobile-nav a[aria-current=page] .nav-glyph-fill { fill: currentColor; fill-opacity: .12; }
+.company-search .company-options, select::picker(select) { box-shadow: 0 18px 50px #00000026, inset 0 1px var(--f-edge); }
+.evidence-sheet { box-shadow: 0 -8px 55px #00000033, inset 0 1px var(--f-edge); -webkit-backdrop-filter: blur(24px) saturate(115%); backdrop-filter: blur(24px) saturate(115%); }
+.evidence-sheet::backdrop { background: #00000057; }
+.evidence-sheet :is(.primary-action, .outline-button, .action-link) { border-radius: 20px; }
+.evidence-sheet .primary-action { background: var(--swiftz-lime); color: #000000; border-color: transparent; box-shadow: inset 0 1px #ffffff80; }
+.legal-theme .icon-button { background: var(--f-glass); color: var(--ink); border-color: var(--line); box-shadow: inset 0 1px var(--f-edge); }
+.app-toast { box-shadow: 0 8px 32px #00000024, inset 0 1px var(--f-edge); }
+
+/* Existing hero content keeps its position on the same neutral tile material. */
+.structured :is(.research-launch, .pulse-story) { background: var(--f-hero); }
+.structured .research-launch .primary-action { background: var(--swiftz-lime); color: #000000; }
+.structured .pulse-story .breadth-counts :is(.direction-up, .direction-up strong) { color: var(--market-up); }
+.structured .pulse-story .breadth-counts :is(.direction-down, .direction-down strong) { color: var(--market-down); }
+.structured .pulse-story .breadth-counts :is(.direction-flat, .direction-flat strong) { color: var(--market-flat); }
+.structured .breadth-counts { border-color: var(--line); }
+.motion-document { background: var(--f-glass); color: var(--ink); border-color: var(--f-edge); box-shadow: var(--f-shadow); }
+.motion-document-front { background: var(--f-menu); color: var(--f-accent); }
+.document-graph > span { background: linear-gradient(var(--f-accent), var(--swiftz-lime)); }
+.document-seal, .motion-orbit-pin { background: var(--f-chip); color: var(--f-accent); border-color: var(--f-edge); }
+.evidence-orbit { border-color: var(--line); }
+
+/* Neutral secondary surfaces and text across saved-data and legal views. */
+html body :is(.person-card, .person-initial, .company-monogram, .comparison,
+  .analysis-note, .guidance-panel, .engine-telemetry dl, .setting-info,
+  .portfolio-table, .empty-state, .legal-card, .staging-table) {
+  background: var(--f-glass); border-color: var(--line); color: var(--ink);
+}
+html body :is(.coverage-card h3, .coverage-card p, .coverage-row span,
+  .research-card p, .quarter-card > p, .quarter-card summary, .section-description,
+  .guidance-panel p, .comparison p, .ratio-row small, .case-side h4, .primary-facts p,
+  .source-excerpt > p, .source-row p, .source-row code, .research-status,
+  .company-heading p, .engine-telemetry, .mix-legend button, .mix-legend button strong,
+  .mix-expand, .signal-mix > .caption, .return-map .mix-heading .caption,
+  .health-grid article p, .health-grid h3, .source-inspector p, .source-inspector label,
+  .toggle-row, .settings-form > label, .settings-form > p, .category-watches label,
+  .setting-info p, .setting-info strong, .empty-description, .legal-card p, .legal-card li,
+  .pagination, .research-jumps span, .app-footer p) { color: var(--muted); }
+html body :is(.ticker-button, .holding-card h3, .research-card h4, .person-card strong,
+  .person-card p, .source-row strong, .mix-heading h3, .health-grid article > strong,
+  .source-inspector h2, .research-jumps strong, .legal-card h2, .legal-card h3,
+  .legal-page h1, .route-error h1) { color: var(--ink); }
+html body :is(.text-button, .app-footer a, .legal-page a, .legal-card a) { color: var(--f-accent); }
+html body :is(.table-scroll th, .table-scroll td, .financial-table th, .financial-table td) { color: var(--ink); border-color: var(--line); }
+html body thead th { background: var(--f-solid); }
+.structured :is(.financial-table, .compact-financials, .financial-visual, .proof-box,
+  .advanced-feed-filters, .category-watches, .staging-table, .three-metrics, .ratio-row,
+  .company-filing, .quarter-card details) { border-color: var(--line); }
+.structured .mix-track { stroke: var(--line); }
+.structured .mix-number { fill: var(--ink); }
+.structured .mix-caption { fill: var(--muted); }
+.structured .mix-legend button[aria-pressed=true] { background: var(--f-chip); }
+.structured .replay-banner { background: var(--f-chip); color: var(--muted); border-color: var(--line); }
+.structured .skeleton { background: linear-gradient(110deg, var(--f-solid) 25%, var(--f-chip) 40%, var(--f-solid) 55%); background-size: 200% 100%; border-color: var(--line); }
+.structured .source-inspector input { background: var(--f-solid) !important; color: var(--ink) !important; border-color: var(--line) !important; }
+html body .structured .source-inspector button[class] { background: var(--swiftz-lime) !important; color: #000000 !important; border-color: transparent; }
+.structured .source-inspector [class*=text-white] { color: var(--muted) !important; }
+.structured .source-inspector [class*=text-amber] { color: var(--feedback-warning) !important; }
+.structured .source-inspector [class*=text-emerald] { color: var(--feedback-success) !important; }
+
+/* Keep gaps, failures and positive/negative data meaning visible in either theme. */
+html body .structured :is(.research-warning, .notice, .source-failures) {
+  color: var(--feedback-warning); background: color-mix(in srgb, var(--feedback-warning) 8%, var(--f-solid));
+  border-color: color-mix(in srgb, var(--feedback-warning) 35%, var(--line));
+}
+html body .structured .research-warning p { color: var(--feedback-warning); }
+html body .failure { color: var(--feedback-error); background: color-mix(in srgb, var(--feedback-error) 8%, var(--f-solid)); border-color: color-mix(in srgb, var(--feedback-error) 35%, var(--line)); }
+html body .structured .badge { color: var(--feedback-warning); background: color-mix(in srgb, var(--feedback-warning) 8%, var(--f-solid)); border-color: color-mix(in srgb, var(--feedback-warning) 35%, var(--line)); }
+html body .structured .badge-neutral { color: var(--feedback-info); background: var(--f-chip); border-color: var(--line); }
+html body .structured .badge-green { color: var(--feedback-success); background: color-mix(in srgb, var(--feedback-success) 10%, var(--f-solid)); border-color: color-mix(in srgb, var(--feedback-success) 35%, var(--line)); }
+html body .structured .badge-danger { color: var(--feedback-error); background: color-mix(in srgb, var(--feedback-error) 10%, var(--f-solid)); border-color: color-mix(in srgb, var(--feedback-error) 35%, var(--line)); }
+html body .structured .return-tile.positive { background: linear-gradient(140deg, color-mix(in srgb, var(--market-up) 10%, transparent), transparent), var(--f-panel); }
+html body .structured .return-tile.negative { background: linear-gradient(140deg, color-mix(in srgb, var(--market-down) 10%, transparent), transparent), var(--f-panel); }
+html body .structured :is(.return-tile.flat, .return-tile.missing) { background: var(--f-panel); }
+html body .structured .return-tile.positive strong { color: var(--market-up); }
+html body .structured .return-tile.negative strong { color: var(--market-down); }
+html body .structured :is(.return-tile.flat strong, .return-tile.missing strong) { color: var(--market-flat); }
+
+/* Clear selection, restrained chrome and distinct data surfaces. */
+.structured .mobile-dock .mobile-nav a[aria-current=page] {
+  background: var(--swiftz-lime); color: #000000;
+  box-shadow: inset 0 1px #ffffff80, 0 2px 8px #0000000d;
+}
+.structured .mobile-dock .mobile-nav a[aria-current=page] .nav-glyph-fill { fill: #000000; fill-opacity: .1; }
+.structured .sidebar { border-color: var(--f-card-edge); background: var(--f-glass); box-shadow: 0 3px 16px #00000005; }
+.structured .sidebar nav a { box-shadow: none; }
+.structured .sidebar nav a[aria-current=page] { background: var(--swiftz-lime); border-color: transparent; color: #000000; box-shadow: none; }
+.structured .sidebar .settings-button { border-radius: 12px; }
+.structured .sidebar .settings-button:hover { background: var(--f-chip); color: var(--ink); }
+.structured :is(.filing-card, .research-card, .quarter-card, .holding-card,
+  .health-grid article, .source-row, .signal-mix, .return-map, .source-inspector,
+  .radar-controls, .launch-companies a) { border-color: var(--f-card-edge); }
+.structured :is(.company-context, .research-launch, .pulse-story, .digest-summary,
+  .compact-financials, .financial-visual, .proof-box, .ribbon-chip) { border-color: var(--line); }
+.structured .workspace-notices { border-color: var(--line); }
+.structured .financial-table { background: var(--f-inset-solid); border-color: var(--table-border); }
+.structured .table-scroll { background: var(--table-body); border: 1px solid var(--table-border); border-radius: 12px; isolation: isolate; }
+.structured .table-scroll table { border-collapse: separate; border-spacing: 0; }
+html body .structured .table-scroll thead th { background: var(--table-head); color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--table-border); }
+html body .structured .financial-table .table-scroll thead th:first-child { background: var(--table-head); }
+html body .structured .table-scroll :is(th, td) { border-color: var(--table-border); font-variant-numeric: tabular-nums; }
+html body .structured .table-scroll :is(th, td) + :is(th, td) { border-left: 1px solid var(--table-border); }
+html body .structured .table-scroll tbody tr { background: var(--table-body); }
+html body .structured .table-scroll tbody tr:nth-child(even) { background: var(--table-alt); }
+html body .structured .table-scroll tbody tr > :is(th, td) { background: inherit; }
+html body .structured .financial-table .table-scroll tbody th:first-child { background: var(--table-body); }
+html body .structured .financial-table .table-scroll tbody tr:nth-child(even) th:first-child { background: var(--table-alt); }
+@media (hover: hover) {
+  html body .structured .table-scroll tbody tr:hover { background: var(--table-hover); }
+  html body .structured .financial-table .table-scroll tbody tr:hover th:first-child { background: var(--table-hover); }
+}
+
+/* Native range inputs retain keyboard, touch and screen-reader behavior. */
+.structured input[type=range], .evidence-sheet input[type=range] {
+  -webkit-appearance: none; appearance: none; background: transparent;
+  border: 0; border-radius: 0; box-shadow: none; cursor: pointer;
+  accent-color: var(--f-accent);
+}
+.structured input[type=range]::-webkit-slider-runnable-track,
+.evidence-sheet input[type=range]::-webkit-slider-runnable-track { height: 3px; border: 0; border-radius: 100px; background: var(--range-track); }
+.structured input[type=range]::-webkit-slider-thumb,
+.evidence-sheet input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5.5px;
+  border-radius: 50%; border: 3px solid var(--f-accent); background: var(--f-card-solid);
+  box-shadow: 0 0 0 3px var(--f-card-solid);
+}
+.structured input[type=range]::-moz-range-track,
+.evidence-sheet input[type=range]::-moz-range-track { height: 3px; border: 0; border-radius: 100px; background: var(--range-track); }
+.structured input[type=range]::-moz-range-progress,
+.evidence-sheet input[type=range]::-moz-range-progress { height: 3px; border-radius: 100px; background: var(--f-accent); }
+.structured input[type=range]::-moz-range-thumb,
+.evidence-sheet input[type=range]::-moz-range-thumb { width: 9px; height: 9px; border-radius: 50%; border: 3px solid var(--f-accent); background: var(--f-card-solid); box-shadow: 0 0 0 3px var(--f-card-solid); }
+.structured input[type=range]:focus-visible,
+.evidence-sheet input[type=range]:focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; border-radius: 8px; }
+
+@media (prefers-reduced-transparency: reduce) {
+  .structured :is(.sidebar, .topbar, .company-context, .mobile-dock .mobile-nav,
+    .dock-search, .global-search, .header-search form, .filing-card, .research-card,
+    .quarter-card, .holding-card, .ribbon-chip, .research-launch, .pulse-story),
+  .company-options, .evidence-sheet, .sheet-header, .app-toast, .motion-document,
+  .motion-document-front, select::picker(select) {
+    background: var(--f-solid) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  .structured .dock-search { color: var(--ink) !important; }
+  html[data-theme] .structured :is(.filing-card, .research-card, .quarter-card, .holding-card,
+    .health-grid article, .source-row, .signal-mix, .return-map, .source-inspector,
+    .radar-controls, .launch-companies a), .evidence-sheet, .app-toast {
+    background: var(--f-card-solid) !important;
+  }
+  html[data-theme] .structured :is(.sidebar, .topbar, .mobile-dock .mobile-nav), .sheet-header {
+    background: var(--f-chrome-solid) !important;
+  }
+  html[data-theme] .structured :is(.company-context, .ribbon-chip, .research-launch, .pulse-story) {
+    background: var(--f-inset-solid) !important;
+  }
+  html[data-theme] .structured :is(.global-search, .header-search form, .dock-search), .company-options,
+  .motion-document, .motion-document-front, select::picker(select) {
+    background: var(--f-control-solid) !important;
+  }
+  .structured .mobile-dock .mobile-nav a[aria-current=page] { background: var(--swiftz-lime); color: #000000; }
+  .evidence-sheet::backdrop { background: #00000099; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}
+@media (forced-colors: active) {
+  html body, html[data-theme=dark] body,
+  html body .structured :is(.primary-action, .source-inspector button, .badge,
+    .return-tile, .research-launch, .pulse-story, .ribbon-chip, .global-search,
+    .header-search form, .company-context, .dock-search),
+  html body :is(.legal-card, .app-toast, .evidence-sheet, .sheet-header, .motion-document) {
+    background: Canvas !important; color: CanvasText !important; border-color: CanvasText !important;
+    box-shadow: none; -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  html body .structured :is(.research-launch *, .pulse-story *, .return-tile strong, .badge) { color: CanvasText !important; }
+  html body .structured :is(.sidebar nav a[aria-current=page], .mobile-dock .mobile-nav a[aria-current=page]) { background: Highlight !important; color: HighlightText !important; }
+  html body .structured :is(.table-scroll, .table-scroll thead th, .table-scroll tbody tr, .table-scroll tbody th:first-child) { background: Canvas !important; color: CanvasText !important; border-color: CanvasText !important; }
+  .structured input[type=range], .evidence-sheet input[type=range] { -webkit-appearance: auto; appearance: auto; }
+}
