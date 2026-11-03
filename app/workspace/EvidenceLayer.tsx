@@ -1,5 +1,5 @@
 'use client';
-import {useCallback,useEffect,useRef,useState} from 'react';import {useSearchParams} from 'next/navigation';import {EvidenceContext,EvidenceOpen} from './evidence-context';import {EvidenceDialog} from '../EvidenceButton';import Sheet from '../Sheet';import {useRead,cachedRead} from './cache';import {Failure} from '../terminal/ui';
+import {useCallback,useEffect,useRef,useState} from 'react';import {useSearchParams} from 'next/navigation';import {EvidenceContext,EvidenceOpen} from './evidence-context';import {EvidenceDialog} from '../EvidenceButton';import Sheet from '../Sheet';import {cachedRead} from './cache';import {Failure} from '../terminal/ui';
 export default function EvidenceLayer({children}:{children:React.ReactNode}){
  const params=useSearchParams(),hash=params.get('cite'),page=Number(params.get('page')||1),quote=params.get('quote_id');
  const [current,setCurrent]=useState<EvidenceOpen|null>(null),[error,setError]=useState('');const opened=useRef(false),sequence=useRef(0);

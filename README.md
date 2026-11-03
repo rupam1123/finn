@@ -1,3 +1,11 @@
+# FINN hosted source
+
+Publication is paused at the user's request. This branch is source preparation, not an updated live deployment.
+
+📖 [User manual](https://github.com/rupam1123/finn/blob/main/docs/USER_MANUAL.md) · 🧭 [Judge guide](https://github.com/rupam1123/finn/blob/main/docs/JUDGE_GUIDE.md) · ✅ [Release readiness](https://github.com/rupam1123/finn/blob/main/docs/release-readiness-2026-11-04.md)
+
+The root route now opens a FINN welcome page. Active styling uses solid Swiftz light/dark surfaces, local company logos and release-to-select controls. The saved-source assistant is available; hosted model generation stays disabled.
+
 # FINN hosted read-only workspace
 
 This is the Sites-compatible port of FINN's saved-data assessment app. The original FastAPI/SQLite application remains on the private repository's `main` branch. Hosted source is mirrored to its `sites` branch.
