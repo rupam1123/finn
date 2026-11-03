@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="route-error"><h1>This page isn’t in the workspace.</h1><p>Open the Inbox, company research or saved portfolio to continue.</p><a className="primary-action" href="/">Open Inbox</a><a className="outline-button" href="/research">Open Research</a></main>}

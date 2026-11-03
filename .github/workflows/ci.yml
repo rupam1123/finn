@@ -1,0 +1,28 @@
+name: FINN Sites checks
+on:
+  push:
+    branches: [sites]
+  pull_request:
+    branches: [sites]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sites-checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  hosted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/typescript/bin/tsc --noEmit
+      - run: node --test tests/read-model.test.mjs
+      - run: npm run build
