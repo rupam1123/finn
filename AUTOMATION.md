@@ -1,5 +1,9 @@
 # Publish source updates from GitHub
 
+## Publication paused by the user — 4 November 2026
+
+The user explicitly said not to deploy and that deployment will be done later. Do not publish or redeploy this Site, change its access, or import data. This instruction takes precedence over the recurring publisher prompt below. Stop without deployment until the user explicitly resumes publication in chat. Source review and explanation may continue. Do not treat a new GitHub commit or successful CI check as permission to resume.
+
 The canonical hosted source is the private repository `rupam1123/finn`, branch `sites`. The original Python application, data-export tools and frontend source remain on `main`, which links this checkout as the `hosting` submodule. Never upload private SQLite exports, keys or runtime state to either branch.
 
 The linked Sites task checks the `sites` branch for new commits. This is scheduled publication, not an immediate GitHub webhook. A task that sees no source change must stay quiet.
