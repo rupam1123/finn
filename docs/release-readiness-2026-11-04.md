@@ -11,7 +11,7 @@ The glass stylesheet is no longer imported. Active Swiftz styles use solid surfa
 ## Cleanup audit
 
 - SHA-256 scan of tracked nonempty files found only four identical company route page wrappers. These are required distinct Next.js route entry points and are retained.
-- TypeScript noUnusedLocals/noUnusedParameters identified 17 unused imports across nine components; removed after reviewing their import declarations.
+- TypeScript noUnusedLocals/noUnusedParameters identified 17 unused imports across eight components; removed after reviewing their import declarations.
 - Legacy components imported by regression tests, fixtures, lockfiles, license notices and historical verification are retained.
 - The hosted source is an intentional separate runtime copy managed by the sync manifest, not an accidental duplicate.
 - Private env files, SQLite/WAL data, Git metadata, unknown files, environments and backups remain untouched. No blanket cleanup or source-pack apply was run. No file was deleted merely because its name looked old. The outer pack manager was not present in the parent directories checked; no pack cleanup apply was attempted.
@@ -31,3 +31,5 @@ Use the Site-owning account; preserve the existing Site ID and audience. Verify 
 Compiler-confirmed unused-import checks passed. Existing workspace tests plus pointer/assistant checks and four new welcome/asset checks passed (81 UI checks in total), with the active-theme regression rerun after its update. Twenty local company-logo files passed PNG/dimension checks; TMPV, JYOTHYLAB, SONACOMS and CAMS retain the initials fallback. Both production builds, hosted TypeScript/read-model tests and the router export guard are checked before the source push. Browser verification remains pending, not passed.
 
 The welcome page is also checked in generated production HTML before browser hydration. Evidence URL handling is mounted only inside the research workspace so the landing page does not wait for that client boundary. GitHub Actions passed for the initial source upload; the final rendering follow-up runs the same checks plus this production HTML assertion.
+
+Final runtime GitHub checks passed: main commit be02af213d ([run 41717429019](https://github.com/rupam1123/finn/actions/runs/41717429019)) and sites commit a5e8132dc2 ([run 41717412040](https://github.com/rupam1123/finn/actions/runs/41717412040)). Final local HTTP verification passed for ten routes/assets, including welcome HTML before hydration and disabled public-review generation. This note changes documentation only.
