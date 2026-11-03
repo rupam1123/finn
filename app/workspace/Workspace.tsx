@@ -2,6 +2,7 @@
 import Link from 'next/link';import {usePathname,useRouter} from 'next/navigation';import {createContext,useCallback,useContext,useEffect,useMemo,useRef,useState} from 'react';
 import {Search,Settings2,Inbox,ChartNoAxesCombined,Layers,ShieldCheck,Check,ArrowRight,RefreshCw} from 'lucide-react';
 import {toast} from '../Toasts';
+import {installSlideSelection} from './slide-selection';
 import ThemeToggle from './ThemeToggle';
 import {observeMotion} from './motion';
 import CompanySearch from '../CompanySearch';import PwaStatus from '../PwaStatus';import Sheet from '../Sheet';import {Holding,amount} from '../terminal/data';import {useRead} from './cache';import {resetBrowserPreferences} from '../privacy';import {useStored} from '../terminal/ui';
@@ -10,6 +11,7 @@ export const useWorkspace=()=>useContext(Context);
 const nav=[{path:'/inbox',label:'Inbox',Icon:Inbox,glyph:'inbox'},{path:'/radar',label:'Radar',Icon:ShieldCheck,glyph:'sources'},{path:'/research',label:'Research',Icon:ChartNoAxesCombined,glyph:'research'},{path:'/universe',label:'Universe',Icon:Layers,glyph:'portfolio'}];
 export default function Workspace({children}:{children:React.ReactNode}){
  const pathname=usePathname(),router=useRouter(),overview=useRead<any>('/api/portfolio/overview'),capabilities=useRead<any>('/api/capabilities'),counts=useRead<any>('/api/push/digest?window=1d');const [search,setSearch]=useState(false),[value,setValue]=useState(''),[settings,setSettings]=useState(false),[reset,setReset]=useState(false),[message,setMessage]=useState('');const [telemetry,setTelemetry]=useStored('finn.telemetry',true);const inputRef=useRef<HTMLDivElement>(null),resetButtonRef=useRef<HTMLButtonElement>(null),contentRef=useRef<HTMLDivElement>(null);
+ useEffect(()=>installSlideSelection(document.body),[]);
  const research=useCallback((symbol:string)=>{const ticker=symbol.trim().toUpperCase();if(!/^[A-Z0-9&-]{1,30}$/.test(ticker)){setMessage('Enter an NSE symbol or choose a company match.');return;}if(ticker==='TATAMOTORS'){setSearch(true);setValue(ticker);return;}setSearch(false);setValue('');router.push(`/research/${encodeURIComponent(ticker==='ZOMATO'?'ETERNAL':ticker)}`)},[router]);
  useEffect(()=>{const handle=(e:KeyboardEvent)=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setSearch(v=>!v)}if(e.key==='Escape')setSearch(false)};window.addEventListener('keydown',handle);return()=>window.removeEventListener('keydown',handle)},[]);
  useEffect(()=>{if(search)inputRef.current?.querySelector('input')?.focus()},[search]);

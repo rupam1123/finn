@@ -12,6 +12,7 @@ import "./review.css";
 import "./workspace/workspace.css";
 import "./workspace/glass.css";
 import "./workspace/swiftz.css";
+import "./workspace/touch.css";
 
 export const metadata: Metadata = {title: "FINN — Research workspace", description: "Assessment prototype for reviewing saved financial sources and AI-assisted analysis.", robots:{index:false,follow:false},manifest: "/manifest.webmanifest",
   appleWebApp: {capable: true, statusBarStyle: "black-translucent", title: "FINN"},

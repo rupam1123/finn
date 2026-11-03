@@ -1,9 +1,9 @@
 import vinext from "vinext";
 import { defineConfig } from "vite";
-import hostingConfig from "./.openai/hosting.json";
+import hostingConfig from "./.openai/hosting.json" with { type: "json" };
 import { readExecutionProfile } from "./scripts/execution-profile.mjs";
 import { configureToolEnvironment } from "./scripts/tool-environment.mjs";
-import { sites } from "./scripts/vite/sites-vite-plugin";
+import { sites } from "./scripts/vite/sites-vite-plugin.ts";
 import { connectorPreview } from "./scripts/vite/connector-preview-plugin.mjs";
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
@@ -44,6 +44,13 @@ export default defineConfig(async ({ command }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    build: {
+      rolldownOptions: {
+        // Keep the router namespace stable across dynamic chunk boundaries.
+        // Vite 8.3's matched Rolldown fixes the absorbed dynamic-entry bug.
+        output: { minifyInternalExports: false },
+      },
+    },
     server: {
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }

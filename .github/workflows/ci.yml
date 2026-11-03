@@ -26,3 +26,4 @@ jobs:
       - run: node node_modules/typescript/bin/tsc --noEmit
       - run: node --test tests/read-model.test.mjs
       - run: npm run build
+      - run: node tests/router-bundle.mjs

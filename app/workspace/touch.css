@@ -1,0 +1,28 @@
+/* Pointer selection is scoped to navigation and mutually exclusive controls. */
+.structured :is(.mobile-nav,.window-pills,.quick-categories,.feed-tabs,.segmented,.chart-mode,.research-nav,.company-context nav,.radar-summary,.showcase-pills) {
+  touch-action: pan-y; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+.structured :is(.window-pills,.quick-categories,.feed-tabs,.segmented,.chart-mode,.research-nav,.radar-summary,.showcase-pills) > button,
+.structured .company-context nav a { transition: color 120ms ease, background-color 120ms ease, border-color 120ms ease; }
+.structured [data-slide-active=true] { cursor: grabbing; }
+.structured [data-slide-active=true] > :is(a,button) { -webkit-tap-highlight-color: transparent; }
+.structured [data-slide-active=true] > [data-slide-preview=true] {
+  color: var(--ink); background: color-mix(in srgb, var(--f-accent) 18%, var(--f-card-solid));
+  border-color: var(--f-accent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--f-accent) 35%, transparent);
+}
+.structured .mobile-dock .mobile-nav[data-slide-active=true] a[aria-current=page]:not([data-slide-preview=true]) {
+  color: var(--dock-ink); background: transparent; box-shadow: none;
+}
+.structured .mobile-dock .mobile-nav[data-slide-active=true] a[data-slide-preview=true] {
+  background: var(--swiftz-lime); color: #000; box-shadow: inset 0 1px #ffffff90,0 2px 8px #00000012;
+  transform: translateY(-1px) scale(1.035);
+}
+.structured .mobile-dock .mobile-nav[data-slide-active=true] a[data-slide-preview=true] .nav-glyph-fill { fill: currentColor; fill-opacity: .12; }
+.structured :is(button,a,input,select) { -webkit-tap-highlight-color: transparent; }
+.structured :is(button,a):focus-visible { outline: 2px solid var(--f-focus); outline-offset: 3px; }
+@media(prefers-reduced-motion:reduce) {
+  .structured [data-slide-active=true] > :is(a,button) { transition: none; transform: none!important; }
+}
+@media(forced-colors:active) {
+  .structured [data-slide-active=true] > [data-slide-preview=true] { color: HighlightText!important; background: Highlight!important; outline: 2px solid Highlight; }
+}
