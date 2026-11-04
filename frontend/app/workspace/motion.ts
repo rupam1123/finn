@@ -10,7 +10,6 @@ export function observeMotion(root:HTMLElement,scope:Window=window){
   animations.add(animation);animation.finished.then(()=>animations.delete(animation),()=>animations.delete(animation));
  }
  const observer=new IntersectionObserver(entries=>{
-  let stagger=0;
   for(const entry of entries){
    if(!entry.isIntersecting||played.has(entry.target))continue;
    observer.unobserve(entry.target);played.add(entry.target);if(media?.matches)continue;
@@ -19,10 +18,10 @@ export function observeMotion(root:HTMLElement,scope:Window=window){
     element.querySelectorAll('[data-draw]').forEach(part=>{
      const kind=part.getAttribute('data-draw');
      const frames:Keyframe[]=kind==='line'?[{strokeDasharray:'1 1',strokeDashoffset:1},{strokeDasharray:'1 1',strokeDashoffset:0}]:kind==='grow'?[{transform:'scaleY(.02)',opacity:.4},{transform:'scaleY(1)',opacity:1}]:[{opacity:.15},{opacity:1}];
-     play(part,frames,{duration:kind==='line'?650:480,easing:'cubic-bezier(.2,.8,.2,1)'});
+     play(part,frames,{duration:kind==='line'?240:180,easing:'cubic-bezier(.2,.8,.2,1)'});
     });
    }else{
-    play(element,[{opacity:.55,transform:'translateY(16px) scale(.965)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:360,delay:Math.min(stagger++*24,72),easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'});
+    play(element,[{opacity:.55,transform:'translateY(16px) scale(.965)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:150,easing:'cubic-bezier(.16,1,.3,1)'});
    }
   }
  },{threshold:.06,rootMargin:'0px 0px -12px 0px'});
