@@ -1,15 +1,19 @@
 /* Bounded chrome changes: existing page content, colors and routes are retained. */
-.structured{--chrome-top:64px;--ribbon-height:78px;--chrome-transition:140ms}
-.structured.chrome-compact{--ribbon-height:44px}
+.structured{--chrome-top:64px;--ribbon-height:64px;--chrome-transition:140ms}
+.structured.chrome-compact{--ribbon-height:42px}
 .structured.research-chrome .main-frame{overflow-anchor:none}
-.structured .context-ribbon{height:var(--ribbon-height);min-height:var(--ribbon-height);transition:height var(--chrome-transition) ease,min-height var(--chrome-transition) ease,padding var(--chrome-transition) ease}
-.structured.research-chrome .context-ribbon{position:sticky;top:var(--chrome-top);z-index:30;background:var(--paper)}
+.structured .context-ribbon{height:var(--ribbon-height);min-height:var(--ribbon-height);padding-block:5px;background:color-mix(in srgb,var(--paper) 82%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:height var(--chrome-transition) ease,min-height var(--chrome-transition) ease,padding var(--chrome-transition) ease}
+.structured.research-chrome .context-ribbon{position:sticky;top:var(--chrome-top);z-index:30}
 .structured .context-ribbon .ribbon-quotes{flex:1;min-width:0;padding-inline:18px;scroll-padding-inline:18px;-webkit-mask-image:linear-gradient(to right,transparent,#000 18px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(to right,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
 .structured .context-ribbon .ribbon-quotes:focus-within{-webkit-mask-image:none;mask-image:none}
-.structured .ribbon-chip{flex-shrink:0;transition:min-height var(--chrome-transition) ease,padding var(--chrome-transition) ease,gap var(--chrome-transition) ease}
+.structured .ribbon-chip{flex-shrink:0;min-width:184px;min-height:52px;padding:5px 8px;gap:3px;background:color-mix(in srgb,var(--f-inset-solid) 88%,transparent);transition:min-height var(--chrome-transition) ease,padding var(--chrome-transition) ease,gap var(--chrome-transition) ease}
+.structured .ribbon-chip>span{gap:8px}
+.structured .ribbon-company{gap:6px}
+.structured .ribbon-company .company-logo{width:21px;height:21px}
+.structured .ribbon-company .company-logo img{width:17px;height:17px}
 .structured.chrome-compact .context-ribbon{padding-block:3px}
-.structured.chrome-compact .ribbon-chip{flex-direction:row;align-items:center;justify-content:space-between;min-height:36px;min-width:225px;padding:4px 10px;gap:10px;border-radius:10px}
-.structured.chrome-compact .ribbon-chip>span{flex:1;gap:10px}
+.structured.chrome-compact .ribbon-chip{flex-direction:row;align-items:center;justify-content:space-between;min-height:35px;min-width:164px;padding:3px 8px;gap:6px;border-radius:10px}
+.structured.chrome-compact .ribbon-chip>span{flex:1;gap:6px}
 .structured.chrome-compact .ribbon-chip small{margin:0}
 .structured.chrome-compact .ribbon-extra{display:none}
 .structured.chrome-compact .ribbon-company{gap:6px}
@@ -58,18 +62,19 @@
 /* The bar stays flush with the viewport. Only the current page shows its label. */
 @media(max-width:800px){
  .structured{--chrome-top:60px}
- .structured .mobile-dock{position:fixed;inset:auto 0 0;transform:none;width:100%;max-width:none;min-height:0;gap:4px;padding:6px max(8px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));border:0;border-top:1px solid var(--line);border-radius:0;background:var(--paper);box-shadow:none;pointer-events:auto}
+ .structured .mobile-dock{position:fixed;inset:auto 0 0;transform:none;width:100%;max-width:none;min-height:0;gap:4px;padding:6px max(8px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));border:0;border-top:1px solid var(--line);border-radius:0;background:color-mix(in srgb,var(--paper) 82%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:none;pointer-events:auto}
  .structured .mobile-dock .mobile-nav{flex:1;display:flex;position:static;inset:auto;gap:4px;padding:0;margin:0;border:0;border-radius:0;background:transparent!important;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
  .structured .mobile-dock .mobile-nav::before{display:none}
- .structured .mobile-dock .mobile-nav a,.structured .mobile-dock .mobile-nav a[aria-current=page]{display:flex;align-items:center;justify-content:center;flex:1 1 0;gap:0;min-width:44px;min-height:44px;padding:0 4px;border:0;border-radius:999px;color:var(--muted);background:transparent;box-shadow:none;transition:flex-grow 140ms ease,color 140ms ease,background-color 140ms ease}
- .structured .mobile-dock .mobile-nav a[aria-current=page]{flex-grow:2.2;background:var(--swiftz-lime);color:#000}
+ .structured .mobile-dock .mobile-nav a,.structured .mobile-dock .mobile-nav a[aria-current=page]{display:flex;align-items:center;justify-content:center;flex:1 1 0;gap:0;min-width:44px;min-height:44px;padding:0 4px;border:0;border-radius:999px;color:var(--muted);background:color-mix(in srgb,var(--f-inset-solid) 76%,transparent);box-shadow:inset 0 0 0 1px var(--line);transition:flex-grow 140ms ease,color 140ms ease,background-color 140ms ease}
+ .structured .mobile-dock .mobile-nav a[aria-current=page]{flex-grow:2.2;background:var(--swiftz-lime);color:#000;box-shadow:none}
  .structured .mobile-dock .mobile-nav a span{display:block;max-width:0;opacity:0;margin:0;overflow:hidden;white-space:nowrap;font-size:11px;line-height:1.4;transition:max-width 140ms ease,margin-inline-start 140ms ease,opacity 100ms ease}
  .structured .mobile-dock .mobile-nav a[aria-current=page] span{max-width:64px;opacity:1;margin-inline-start:6px}
  .structured .mobile-dock .mobile-nav svg{flex:none;width:22px;height:22px}
  .structured .mobile-dock .mobile-nav a[aria-current=page] .nav-glyph-fill{fill:currentColor;fill-opacity:.16}
- .structured .mobile-dock .dock-search{flex:0 0 44px;display:flex;justify-content:center;align-items:center;position:static;min-width:44px;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:0;background:transparent!important;color:var(--muted);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+ .structured .mobile-dock .dock-search{flex:0 0 44px;display:flex;justify-content:center;align-items:center;position:static;min-width:44px;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:999px;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);-webkit-backdrop-filter:none;backdrop-filter:none}
  .structured .mobile-dock .dock-search::after{display:none}
- html[data-theme] .structured .mobile-dock :is(.mobile-nav,.dock-search){background:transparent!important}
+ html[data-theme] .structured .mobile-dock .mobile-nav{background:transparent!important}
+ html[data-theme] .structured .mobile-dock .dock-search{background:color-mix(in srgb,var(--f-inset-solid) 76%,transparent)!important}
  .structured .workspace{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
  .pwa-status .pwa-install{display:none}
  .structured .topbar-actions{gap:6px}
@@ -77,4 +82,9 @@
 }
 @media(max-width:520px){.saved-window-notice{align-items:flex-start;flex-direction:column;gap:4px}.structured .context-compact .context-price{padding-left:34px}.structured .context-compact .context-price small{display:none}.company-title-name{gap:8px}}
 @media(prefers-reduced-motion:reduce){.structured :is(.context-ribbon,.ribbon-chip,.company-context,.company-context-title,.company-toolbar),.company-title-name :is(h1,.badge,p){transition:none}}
+@media(prefers-reduced-transparency:reduce){
+ .structured :is(.context-ribbon,.mobile-dock){background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}
+ .structured .mobile-dock .mobile-nav a:not([aria-current=page]){background:var(--f-inset-solid)}
+ html[data-theme] .structured .mobile-dock .dock-search{background:var(--f-inset-solid)!important}
+}
 @media(forced-colors:active){.structured .context-ribbon .ribbon-quotes{-webkit-mask-image:none;mask-image:none}.structured .company-toolbar button.ask-finn-button{background:Highlight;color:HighlightText}.structured .mobile-dock{background:Canvas;border-top-color:CanvasText}.structured .mobile-dock .mobile-nav a[aria-current=page]{outline:2px solid Highlight;outline-offset:-3px}}
