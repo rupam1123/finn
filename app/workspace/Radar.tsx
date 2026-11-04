@@ -1,6 +1,19 @@
 'use client';
 import SavedWindowNotice from './SavedWindowNotice';import Link from 'next/link';import {useEffect,useState,type CSSProperties} from 'react';import {ArrowUpRight,RefreshCw,ShieldCheck,TrendingUp,ChartNoAxesCombined} from 'lucide-react';import {useStored,Failure,Skeleton,Empty,Pagination,Status} from '../terminal/ui';import {amount,time,date} from '../terminal/data';import {useRead} from './cache';import Chart from '../terminal/Chart';import {useWorkspace} from './Workspace';
-export function VolumeSpark({bars,threshold=2}:{bars:any[];threshold?:number}){const valid=bars.filter(b=>Number.isFinite(b.volume)&&b.volume>=0).slice(-21);const prior=valid.slice(0,-1),average=prior.length===20?prior.reduce((s,b)=>s+b.volume,0)/20:null;const max=Math.max(1,...valid.map(b=>b.volume),average?average*threshold:0);return <figure className="volume-spark"><svg data-motion="plot" viewBox="0 0 260 66" role="img" aria-label={`Raw volume, ${prior.length} prior sessions and trigger. ${average==null?'20-session baseline unavailable.':`Threshold ${threshold} times prior 20-session mean.`}`}>{valid.map((b,i)=><rect data-draw="grow" style={{transformOrigin:'0px 60px'}} x={5+i*12} y={60-b.volume/max*52} width="8" height={Math.max(1,b.volume/max*52)} rx="2" fill={i===valid.length-1?'var(--f-chart,#277b9b)':'var(--f-volume-base,#718da0)'} key={b.date}><title>{b.date}: {amount(b.volume,0)} shares</title></rect>)}{average!=null&&<line x1="3" x2="258" y1={60-average*threshold/max*52} y2={60-average*threshold/max*52} stroke="#967342" strokeDasharray="4 3"/>}</svg><figcaption>{prior.length}/20 prior sessions + trigger</figcaption></figure>}
+export function VolumeSpark({bars,threshold=2}:{bars:any[];threshold?:number}){
+ const valid=bars.filter(b=>Number.isFinite(b.volume)&&b.volume>=0).slice(-21);
+ const prior=valid.slice(0,-1),average=prior.length===20?prior.reduce((s,b)=>s+b.volume,0)/20:null;
+ const max=Math.max(1,...valid.map(b=>b.volume),average?average*threshold:0);
+ return <figure className="volume-spark">
+  <svg data-motion="plot" viewBox="0 0 260 66" role="img" aria-label={`Raw volume, ${prior.length} prior sessions and trigger. ${average==null?'20-session baseline unavailable.':`Threshold ${threshold} times prior 20-session mean.`}`}>
+   <g data-draw="grow" style={{transformOrigin:'0px 60px'}}>
+    {valid.map((b,i)=><rect x={5+i*12} y={60-b.volume/max*52} width="8" height={Math.max(1,b.volume/max*52)} rx="2" fill={i===valid.length-1?'var(--f-chart,#277b9b)':'var(--f-volume-base,#718da0)'} key={b.date}><title>{b.date}: {amount(b.volume,0)} shares</title></rect>)}
+   </g>
+   {average!=null&&<line x1="3" x2="258" y1={60-average*threshold/max*52} y2={60-average*threshold/max*52} stroke="#967342" strokeDasharray="4 3"/>}
+  </svg>
+  <figcaption>{prior.length}/20 prior sessions + trigger</figcaption>
+ </figure>
+}
 export default function Radar(){
  const {holdings}=useWorkspace();
  const [window,setWindow]=useStored('finn.window','1d'),[price,setPrice]=useStored('finn.price','3'),[volume,setVolume]=useStored('finn.volume','2'),[draftP,setDraftP]=useState(price),[draftV,setDraftV]=useState(volume),[page,setPage]=useState(1),[bucket,setBucket]=useState('all');useEffect(()=>setDraftP(price),[price]);useEffect(()=>setDraftV(volume),[volume]);useEffect(()=>{const timer=setTimeout(()=>{setPrice(draftP);setVolume(draftV)},300);return()=>clearTimeout(timer)},[draftP,draftV]);
