@@ -15,6 +15,7 @@ import "./workspace/welcome.css";
 import "./workspace/picker.css";
 import "./workspace/assistant.css";
 import "./workspace/details-polish.css";
+import "./workspace/chrome-refinements.css";
 import "./workspace/typography.css";
 
 export const metadata: Metadata = {title: "FINN — Research workspace", description: "Assessment prototype for reviewing saved financial sources and AI-assisted analysis.", robots:{index:false,follow:false},manifest: "/manifest.webmanifest",

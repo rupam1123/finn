@@ -1,0 +1,71 @@
+/* Bounded chrome changes: existing page content, colors and routes are retained. */
+.structured{--chrome-top:64px;--ribbon-height:78px}
+.structured.chrome-compact{--ribbon-height:44px}
+.structured.research-chrome .main-frame{overflow-anchor:none}
+.structured .context-ribbon{height:var(--ribbon-height);min-height:var(--ribbon-height);transition:height 220ms ease,min-height 220ms ease,padding 220ms ease}
+.structured.research-chrome .context-ribbon{position:sticky;top:var(--chrome-top);z-index:30;background:var(--paper)}
+.structured .context-ribbon .ribbon-quotes{flex:1;min-width:0;padding-inline:18px;scroll-padding-inline:18px;-webkit-mask-image:linear-gradient(to right,transparent,#000 18px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(to right,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+.structured .context-ribbon .ribbon-quotes:focus-within{-webkit-mask-image:none;mask-image:none}
+.structured .ribbon-chip{flex-shrink:0;transition:min-height 220ms ease,padding 220ms ease,gap 220ms ease}
+.structured.chrome-compact .context-ribbon{padding-block:3px}
+.structured.chrome-compact .ribbon-chip{flex-direction:row;align-items:center;justify-content:space-between;min-height:36px;min-width:225px;padding:4px 10px;gap:10px;border-radius:10px}
+.structured.chrome-compact .ribbon-chip>span{flex:1;gap:10px}
+.structured.chrome-compact .ribbon-chip small{margin:0}
+.structured.chrome-compact .ribbon-extra{display:none}
+.structured.chrome-compact .ribbon-company{gap:6px}
+.structured.chrome-compact .ribbon-company .company-logo{width:20px;height:20px}
+.structured.chrome-compact .ribbon-company .company-logo img{width:16px;height:16px}
+.structured.research-chrome .company-context{top:calc(var(--chrome-top) + var(--ribbon-height));transition:top 220ms ease,padding 220ms ease}
+.company-title-name{display:flex;align-items:center;gap:12px;min-width:0}
+.company-title-name>.company-logo{display:inline-flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #e5e5e5;overflow:hidden}
+.company-title-name>.company-logo img{width:28px;height:28px;object-fit:contain}
+.company-title-name>.company-logo>span{font-size:10px;color:#171717}
+.company-title-name h1{transition:font-size 220ms ease;overflow-wrap:anywhere}
+.company-title-name :is(.badge,p){display:block;max-height:60px;overflow:hidden;transition:max-height 220ms ease,opacity 180ms ease,margin 220ms ease}
+.structured .company-context-title{transition:padding 220ms ease,margin 220ms ease}
+.structured .company-toolbar{position:relative;z-index:1;transition:margin-bottom 220ms ease,padding 220ms ease}
+.structured .context-compact .company-context-title{display:grid;grid-template-columns:minmax(0,1fr);align-content:center;gap:0;min-height:44px;padding:0 116px 0 34px;margin-block:0}
+.structured .context-compact .company-title-name h1{font-size:18px;line-height:1.4;margin:0}
+.structured .context-compact .company-title-name :is(.badge,p){max-height:0;opacity:0;margin:0;padding-block:0;border-width:0}
+.structured .context-compact .company-toolbar{margin-bottom:-44px;padding-bottom:0;min-height:44px;gap:8px;pointer-events:none}
+.structured .context-compact .company-toolbar>*{pointer-events:auto}
+.structured .context-compact .company-toolbar>.text-button{min-height:44px;min-width:30px}
+.structured .context-compact .company-toolbar>.text-button span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.structured .context-compact .company-title-name>.company-logo{width:26px;height:26px}
+.structured .context-compact .company-title-name>.company-logo img{width:20px;height:20px}
+.structured .context-compact .context-price{display:flex;align-items:center;gap:6px;text-align:left;padding-left:38px}
+.structured .context-compact .context-price strong{font-size:12px;line-height:1.25}
+.structured .context-compact .context-price small{font-size:9px;line-height:1.4}
+.structured .context-compact nav a{padding-block:10px;min-height:40px}
+.structured .company-toolbar button.ask-finn-button{background:var(--swiftz-lime);color:#000;border:1px solid transparent;box-shadow:none}
+.structured .company-toolbar .ask-finn-button svg{color:currentColor}
+.structured .company-toolbar .ask-finn-button:hover{filter:brightness(.96)}
+.structured .company-toolbar .ask-finn-button:focus-visible{outline:2px solid var(--f-focus);outline-offset:3px}
+.structured .home-button{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:44px;min-height:44px}
+.saved-window-notice{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;margin:16px 0;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.saved-window-notice strong{font-size:13px;line-height:1.5;color:var(--ink)}
+.saved-window-notice p{font-size:11px;line-height:1.7;color:var(--muted);margin:4px 0 0;max-width:680px}
+.saved-window-notice>.text-button{flex:none;min-height:44px;font-size:12px}
+/* Figma Bottom: full width, square container, 24px icons, evenly spaced slots.
+   FINN keeps its own destinations/icons and readable labels; the OS owns its home indicator. */
+@media(max-width:800px){
+ .structured{--chrome-top:60px}
+ .structured .mobile-dock{position:fixed;inset:auto 0 0;transform:none;width:100%;max-width:none;min-height:83px;gap:0;padding:10px max(8px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom));border:0;border-top:1px solid var(--line);border-radius:0;background:var(--paper);box-shadow:none;pointer-events:auto}
+ .structured .mobile-dock .mobile-nav{flex:4;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:static;inset:auto;gap:0;padding:0;margin:0;border:0;border-radius:0;background:transparent!important;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+ .structured .mobile-dock .mobile-nav::before{display:none}
+ .structured .mobile-dock .mobile-nav a,.structured .mobile-dock .mobile-nav a[aria-current=page]{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:4px;min-width:0;min-height:46px;padding:2px 4px;border:0;border-radius:0;color:var(--muted);background:transparent;box-shadow:none;transition:color 150ms ease}
+ .structured .mobile-dock .mobile-nav a[aria-current=page]{color:var(--f-accent)}
+ .structured .mobile-dock .mobile-nav a span,.structured .mobile-dock .mobile-nav a[aria-current=page] span{display:block;max-width:none;opacity:1;margin:0;font-size:10px;line-height:1.4;transition:none}
+ .structured .mobile-dock .mobile-nav svg{width:24px;height:24px}
+ .structured .mobile-dock .mobile-nav a[aria-current=page] .nav-glyph-fill{fill:currentColor;fill-opacity:.16}
+ .structured .mobile-dock .dock-search{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;position:static;min-width:0;width:auto;height:auto;min-height:46px;padding:2px 4px;border:0;border-radius:0;background:transparent!important;color:var(--muted);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+ .structured .mobile-dock .dock-search::after{display:none}
+ html[data-theme] .structured .mobile-dock :is(.mobile-nav,.dock-search){background:transparent!important}
+ .structured .dock-search::before{content:'Search';order:1;font-size:10px;line-height:1.4}
+ .structured .workspace{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
+ .structured .topbar-actions{gap:6px}
+ .structured .topbar-actions .icon-button{min-width:40px;width:40px}
+}
+@media(max-width:520px){.saved-window-notice{align-items:flex-start;flex-direction:column;gap:4px}.structured .context-compact .context-price{padding-left:34px}.structured .context-compact .context-price small{display:none}.company-title-name{gap:8px}}
+@media(prefers-reduced-motion:reduce){.structured :is(.context-ribbon,.ribbon-chip,.company-context,.company-context-title,.company-toolbar),.company-title-name :is(h1,.badge,p){transition:none}}
+@media(forced-colors:active){.structured .context-ribbon .ribbon-quotes{-webkit-mask-image:none;mask-image:none}.structured .company-toolbar button.ask-finn-button{background:Highlight;color:HighlightText}.structured .mobile-dock{background:Canvas;border-top-color:CanvasText}.structured .mobile-dock .mobile-nav a[aria-current=page]{outline:2px solid Highlight;outline-offset:-3px}}
