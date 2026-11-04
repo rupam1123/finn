@@ -24,7 +24,7 @@ export default function PwaStatus() {
   }, []);
   return <div className="pwa-status">
     {offline && <p role="status" className="text-xs text-amber-100">Offline · showing only what is already on screen</p>}
-    {install && <button type="button" className="citation-pill" disabled={installing} onClick={async () => {
+    {install && <button type="button" className="citation-pill pwa-install" disabled={installing} onClick={async () => {
       setInstalling(true);
       try {await install.prompt(); await install.userChoice; setInstall(null);}
       catch {setMessage("Installation unavailable. Use your browser’s Add to Home Screen option.");}
